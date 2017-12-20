@@ -32,7 +32,7 @@ class Header extends Component {
   }
 
   toggleBurgerHandler = () => {
-    if(this.state.navbarBurgerClasses.indexOf("is-active")==-1){
+    if(this.state.navbarBurgerClasses.indexOf("is-active")===-1){
       this.setState({navbarBurgerClasses:["navbar-burger","burger","is-active"]});    
       this.setState({navbarMenuClasses:["navbar-menu","is-active"]});    
     } else {

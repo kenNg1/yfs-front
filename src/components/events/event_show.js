@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import * as actions from '../../actions'
 
-import styles from './event_show.css'
 import moment from 'moment';
 
 const mapStateToProps = state => ({
@@ -45,7 +44,7 @@ class EventShow extends Component {
     
     let modal = null;
 
-    if(this.state.registerModal==true) {
+    if(this.state.registerModal===true) {
       modal = (
         <div style={{backgroundColor: 'RGBA(0,0,0,0.8)', marginTop: "100px", zIndex:"100", position:"fixed", left:'50%'}}> 
           <div className='container' style={centerText}>
@@ -99,12 +98,10 @@ class EventShow extends Component {
 }
 
 class TopEventInfo extends Component {
-  constructor(props){
-    super(props)
-  }
+
   renderFull(max, going){
-    going === null ? 0 : going
-    return (max-going)
+    going === null ? 0 : going;
+    return (going)
   }
   render(){
     const {event} = this.props;
@@ -143,12 +140,10 @@ class TopEventInfo extends Component {
 }
 
 class RegistrationInfo extends Component {
-  constructor(props){
-    super(props)
-  }
+
   renderFull(max, going){
     going === null ? 0 : going
-    return (max-going)
+    return (going)
   }
   render(){
     const {event} = this.props
@@ -185,9 +180,7 @@ class RegistrationInfo extends Component {
 }
 
 class Notice extends Component {
-  constructor(props){
-    super(props)
-  }
+
   render(){
     const {event} = this.props
     return (
@@ -205,9 +198,7 @@ class Notice extends Component {
 }
 
 class EventInfo extends Component {
-  constructor(props){
-    super(props)
-  }
+
   render(){
     const {event} = this.props
     return (
@@ -223,5 +214,6 @@ class EventInfo extends Component {
     )
   }
 }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventShow);

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { createStore, applyMiddleware, compose } from 'redux';
@@ -22,7 +22,7 @@ import EventShow from './components/events/event_show';
 import Contact from './components/contact';
 import ScrollToTop from './components/UI/ScrollToTop';
 // const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(reducers, composeEnhancers(
   applyMiddleware(thunk),

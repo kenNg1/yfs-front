@@ -16,7 +16,7 @@ const ROOT_URL = ''
 
 export const signUpUser = (values, callback) => {
   return dispatch => {
-    const request = axios.post(`${ROOT_URL}/register`, values)
+    axios.post(`${ROOT_URL}/register`, values)
     .then(response => {
       callback();
       dispatch({type: SIGN_UP, payload: response.data});
@@ -26,7 +26,7 @@ export const signUpUser = (values, callback) => {
 
 export const signInUser = (values, callback) => {
   return dispatch => {
-    const request = axios.post(`${ROOT_URL}/login`, values)
+    axios.post(`${ROOT_URL}/login`, values)
     .then(response => {
       callback()
       dispatch({type: SIGN_IN, payload: response.data});
