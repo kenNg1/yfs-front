@@ -1,0 +1,55 @@
+#myHeader {
+    margin-top:5px;
+}
+
+#myHeader .brand {
+    display:inline-block;
+    position: relative;
+    top: -10px;
+    
+}
+
+@media (max-width:500px){
+    #myHeader .brand {
+        top: -15px;        
+    }
+
+    #myHeader .brand p {
+        font-size:1rem;
+    }
+
+    #myHeader div.navbar-burger.burger {
+        display: inline-block;
+    }
+
+    #myHeader a.navbar-item {
+        text-align: center;
+        display:block;
+    }
+
+    #myHeader div.navbar-end {
+        text-align: center;
+        display:block;
+    }
+}
+
+
+#myHeader .brand .title {
+    font-family: 'Karla', sans-serif;
+}
+
+#myHeader .logoGlobe {
+    margin-left:15px;
+    height: 70px;
+}
+
+#myHeader .navbar-item {
+    margin-top:15px;
+    display:inline-block;
+    z-index:99;  
+    cursor: pointer;  
+}
+
+.navbar-menu .is-active {
+    z-index:999;
+}

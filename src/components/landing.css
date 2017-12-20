@@ -1,0 +1,93 @@
+#landing .landingBackground {
+    width: auto;
+    padding-top:10px;
+    height: 85vh;
+    background-repeat: no-repeat;
+    background-position: center 
+  }
+
+/* #landing .column {
+    padding-left:10%;    
+    padding-right:10%;    
+} */
+
+#landing .legend p {
+    font-family: 'Raleway', sans-serif;
+    font-weight:bold;
+    color:rgb(255,255,252);
+    text-shadow: 3px 3px rgba(0,0,0,0.9);
+    font-size:4rem;
+    line-height: 95px;
+    margin-top:35%;
+    margin-left:20%;  
+}
+
+@media (min-width:1000px){
+    #landing .legend p {
+        font-size:4.5rem;
+        margin:0 auto;
+        margin-top:65%;
+    }
+
+    #landing div.legend {
+        left:50%;
+        top:50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%),
+    }
+}
+
+#landing .secondBackground {
+    height: 100vh;
+    width:auto;
+    background-color: white;
+    display:flex;
+    align-items: center;
+  }
+
+#landing .secondBackground .column {
+    margin:2% 0;
+}
+
+#landing .secondBackground h4 {
+    color:rgba(0,0,0,0.9);
+}
+
+/* used for the icons! */
+#landing .logo {
+    height:40px;
+}  
+
+#landing .thirdBackground {
+    width: 100%;
+    height: 90vh;
+    background-color: rgba(124, 133, 144, 0.856);
+    padding:15px;    
+  }
+
+#landing .thirdBackground p  {
+    color:rgb(255,255,252);    
+}
+
+#landing .thirdBackground p.subtitle.is-6.first {
+    margin-bottom:0.5rem;
+}
+
+#landing .fourthBackground{
+    width: 100%;
+    /* background-color: #87f6c0; */
+    padding:15px;   
+    display:flex;
+    align-items:center;
+}
+
+#landing .about1 {
+    height:400px
+}
+#landing .about2 {
+    height:200px
+}
+
+#landing .fourthBackground p {
+    color:rgb(49, 49, 49);
+}

@@ -1,0 +1,79 @@
+/* global styles */
+
+.container-fluid {
+  padding-bottom: 3vh;
+  width: 99vw;
+}
+
+.container {
+  width: 90%;
+}
+
+
+.eventCard {
+  min-height: 200px;
+  width: 100%;
+  box-shadow: 2px 2px 2px #888888;
+  margin-bottom: 30px;
+  display:flex;
+}
+
+.cardLeft {
+  position: relative;
+  /* width: 30%; */
+  height: 100%;
+  display: inline-block;
+  padding-top:20px;    
+}
+
+.cardLeft img {
+  height:100%;
+  width:100%
+}
+
+.cardLeftTopDetails {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 0px 5px;
+  margin: 5px;
+  border-radius: 5px;
+  text-align:right;
+  background-color: #4f4f4f;
+  color: white
+}
+
+.cardLeftTopDetails p {
+  margin: auto;
+  font-size: 20px;
+}
+
+.cardLeftBottomDetails {
+  position: absolute;
+  bottom: 0px;
+  width:100%;
+  text-align:right;
+  background-color:#024b71;
+  color: white
+}
+
+.cardLeftBottomDetails h5 {
+  margin: 10px
+}
+
+.cardRight {
+  width: 70%;
+  height: 100%;
+  padding-left: 10px;
+  display: inline-block;
+  position: relative;
+}
+
+.cardRight .date {
+  color: grey;
+  text-align: left;
+  margin-top:10px;
+}
+
+
+
