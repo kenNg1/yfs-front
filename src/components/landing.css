@@ -35,18 +35,22 @@
         -webkit-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%),
     }
+
+    #landing div.columns {
+        align-items:center;
+    }
 }
 
 #landing .secondBackground {
-    height: 100vh;
     width:auto;
     background-color: white;
     display:flex;
     align-items: center;
+    padding:4% 0;
   }
 
 #landing .secondBackground .column {
-    margin:2% 0;
+    margin:3% 0;
 }
 
 #landing .secondBackground h4 {
@@ -55,15 +59,14 @@
 
 /* used for the icons! */
 #landing .logo {
-    height:40px;
+    height:50px;
 }  
 
 #landing .thirdBackground {
     width: 100%;
-    height: 90vh;
     background-color: rgba(124, 133, 144, 0.856);
-    padding:15px;    
-  }
+    padding:5% 0;
+}
 
 #landing .thirdBackground p  {
     color:rgb(255,255,252);    
@@ -76,7 +79,7 @@
 #landing .fourthBackground{
     width: 100%;
     /* background-color: #87f6c0; */
-    padding:15px;   
+    padding:5% 0;
     display:flex;
     align-items:center;
 }

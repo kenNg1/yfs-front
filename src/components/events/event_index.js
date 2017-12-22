@@ -20,7 +20,8 @@ class EventIndex extends Component {
     this.props.getEvents()
   }
   
-  renderFull(full){
+  renderFull(max,joined){
+    const full = (joined&&max-joined===0)
     return full? "Full": null
   }
 
@@ -31,11 +32,11 @@ class EventIndex extends Component {
 
       return (
         <Link key={`id-${event.id}`} to={`/events/${event.id}`}>
-          <div className='card eventCard' key={event.id}>
+          {/* <div className='card eventCard' key={event.id}>
             <div className='cardLeft'>
               <img style={{backgroundImage: `url(${event.image})`, backgroundSize: 'cover'}} />
               <div className='cardLeftTopDetails'>
-                <p>{this.renderFull(event.full)}</p>
+                <p>{this.renderFull(event.studentsMax,event.studentsIn)}</p>
               </div>
               <div className='cardLeftBottomDetails'>
                 <h5>HK${parseInt(event.price, 10).toLocaleString()}</h5>
@@ -47,7 +48,32 @@ class EventIndex extends Component {
               <p>{event.shortInfo.slice(0,100)} ...</p>
               <p className='location'>{event.location}</p>
             </div>
+          </div> */}
+
+          <div id="eventShow" className="box"> 
+            <div className="columns is-centered">
+                <div className="column is-6 cardLeft">
+                    <h3 className='date'>{date}</h3>
+                    <p className="title is-5">{event.name}</p>
+                    <p>{event.shortInfo}</p>
+                </div>
+                <p className='location' style={{marginTop:'20px'}}><strong>Location:</strong> {event.location}</p>
+
+              <div className="column is-4 is-two-thirds-mobile cardRight">
+                <div className="card">
+                  <img src="https://bulma.io/images/placeholders/480x320.png" />
+                  <div className='cardLeftTopDetails'>
+                    <p>{this.renderFull(event.studentsMax,event.studentsIn)}</p>
+                  </div>
+                  <div className='cardLeftBottomDetails'>
+                    <h5>HK${parseInt(event.price, 10).toLocaleString()}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+
+
         </Link>
       )
     })
@@ -65,9 +91,57 @@ class EventIndex extends Component {
       return (
         <div id="eventsIndex" className='container-fluid'>
           <br />
-            <div className='container'>
-                {this.renderEvents(this.props.eventIndex)}
+
+          <div className='container'>
+
+            <nav className="breadcrumb has-succeeds-separator" aria-label="breadcrumbs">
+              <ul>
+                <li><Link to={'/'}>Home</Link></li>             
+                <li><a>Programs</a></li>             
+              </ul>
+            </nav>
+            <div className="dropdown is-hoverable">
+                  
+                </div>
+            <div className="tabs is-right" style={{overflow:"visible"}}>
+
+            <ul>
+
+            <div className="dropdown is-hoverable">
+              <div className="dropdown-trigger">
+                <a aria-haspopup="true" aria-controls="dropdown-menu">
+                  <span>Country</span>
+                  <span className="icon is-small">
+                    <i className="fa fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </div>
+              <div className="dropdown-menu" id="dropdown-menu" role="menu">
+                <div className="dropdown-content">
+                  <a className="dropdown-item">
+                    Hong Kong
+                  </a>
+                  <a className="dropdown-item">
+                    China
+                  </a>
+                </div>
+              </div>
             </div>
+
+              <li>
+                <a className="dropdown-filter">
+                  <span>Date</span>
+                  <span className="icon"><i className="fa fa-angle-down"></i></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+              {this.renderEvents(this.props.eventIndex)}
+          </div>
+
+
+
         </div>
       )
     }

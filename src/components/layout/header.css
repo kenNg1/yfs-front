@@ -9,6 +9,10 @@
     
 }
 
+#myHeader a.navbar-item{
+    font-weight:500;
+}
+
 @media (max-width:500px){
     #myHeader .brand {
         top: -15px;        
@@ -25,6 +29,11 @@
     #myHeader a.navbar-item {
         text-align: center;
         display:block;
+        padding:0;
+    }
+
+    #myHeader #navMenuColorwhite-example div div {
+        margin-top: -10px;
     }
 
     #myHeader div.navbar-end {
@@ -47,9 +56,20 @@
     margin-top:15px;
     display:inline-block;
     z-index:99;  
-    cursor: pointer;  
+}
+
+#myHeader .navbar-item:hover {
+    margin-top:15px;
+    display:inline-block;
+    z-index:99;  
 }
 
 .navbar-menu .is-active {
     z-index:999;
 }
+
+nav.breadcrumb.has-succeeds-separator {
+    padding-left:5%;
+    position:relative;
+    top:3px;
+  }

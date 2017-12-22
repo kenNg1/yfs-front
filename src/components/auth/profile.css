@@ -1,0 +1,11 @@
+#profile p.title.is-6{
+    margin-bottom: 0.5rem;
+}
+
+#profile div.buttons.is-centered a{
+    text-decoration: none;
+}
+
+#profile div.tile.is-child.notification.is-danger{
+    padding: 0.25rem;
+}

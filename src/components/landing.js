@@ -1,25 +1,48 @@
 import React, {Component} from 'react';
 // import { Link } from 'react-router-dom'
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 // import hero from './hero2.png';
-import hero from './hero2-b.jpg';
 import styles from './landing.css';
 // below is example only
 import logo from '../components/layout/logo-globe.png';
-import about2 from './about2-edited-image.png'
+import heroImg from './images/hero2-b.jpg';
+import about2Img from './images/about2-edited-image.png'
+import awardImg from './images/icon_Award.png'
+import podiumImg from './images/podium.png'
+import mentorImg from './images/mentorship.png'
+import mapImg from './images/map.png'
+import gallery1 from './images/gallery1.jpg'
+
+const mapStateToProps = state => {
+  return {
+    message:state.userInfo.message
+  }
+}
+
 class Landing extends Component {
   componentDidMount(){
     window.scrollTo(0, 0);
   }
   
+  renderAlert(){
+    if(this.props.message){
+      return(
+        <div className="notification is-primary fade-in-animation" style={{position:'absolute',width:"400px",margin:"0 auto",left:0,right:0}}>
+          {this.props.message}          
+        </div>
+      )
+    }
+  }
+
   render(){
     const landingBackground = {
-      backgroundImage: `url(${hero})`,     
+      backgroundImage: `url(${heroImg})`,     
     }
 
     return (
       <div id="landing">
         <section style={landingBackground} className="landingBackground">
+          {this.renderAlert()}
           <div className="legend" style={{position:'absolute'}}>
             <p>BE&nbsp; A&nbsp; LEGEND.</p>
           </div>
@@ -28,21 +51,21 @@ class Landing extends Component {
           <div className='container'>
             <div className="columns is-desktop is-vcentered">
                 <div className="column has-text-centered">
-                    <img className="logo" src={logo}/>
+                    <img className="logo" src={awardImg}/>
                     <h4 className="subtitle is-5">Real-life experience for your CV</h4>
                 </div>
                 <div className="column has-text-centered">
-                    <img className="logo" src={logo}/>
+                    <img className="logo" src={podiumImg}/>
                     <h4 className="subtitle is-5">Pitch to real investors who judge your data</h4>
                 </div>
                 <div className="column has-text-centered">
-                    <img className="logo" src={logo}/>
+                    <img className="logo" src={mentorImg}/>
                     <h4 className="subtitle is-5">Gain long-term mentorship & intern opportunities</h4>
                 </div>
             </div>
             <div className="columns is-desktop is-vcentered">
                 <div className="column has-text-centered">
-                    <img className="logo" src={logo}/>
+                    <img className="logo" src={mapImg}/>
                     <h4 className="subtitle is-5">Get international exposure and industry insights</h4>
                 </div>
                 <div className="column has-text-centered">
@@ -87,20 +110,19 @@ class Landing extends Component {
                 <p className="subtitle is-6">180+ entrepreneurs ready to mentor</p>
                 <p className="subtitle is-6">500+ future entreprenuers since YFS started</p>
             </div>
-            <div className="column has-text-centered">
+            <div className="column is-three-quarters has-text-centered">
               <div className="columns">
                 <div className="column">
-                  <img className="about1" src={about2}/>
+                  <img className="about1" src={gallery1}/>
                 </div>
                 <div className="column">
-                  <img className="about2" src={about2}/>
-                  <img className="about2" src={about2}/>
+                  <img className="about2" src={about2Img}/>
                 </div>
               </div>
             </div>
             <div className="column">
-                <p className="subtitle is-6">Lectures</p>
-                <p className="subtitle is-6">from entrepreneurs and a lot more!</p>
+                <p className="subtitle is-6">We're in Hong Kong, and soon in China, Singapore, Malaysia & Thailand</p>
+                <p className="subtitle is-6">Sponsored by Credit Suisse & other world famous names</p>
             </div>
         </div>
       </div>
@@ -110,4 +132,4 @@ class Landing extends Component {
   }
 }
 
-export default Landing;
+export default connect(mapStateToProps)(Landing);

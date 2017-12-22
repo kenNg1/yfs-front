@@ -3,22 +3,8 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { Field, reduxForm, initialize, formValueSelector } from 'redux-form'
 import * as actions from '../../actions';
+import {COUNTRIES, HEARS, SCHOOLS, FAMILIARITY} from '../UI/formOptions'
 
-const hears = ['Word of Mouth', 'Facebook Ads', 'Family Members', 'School Staff', 'Others']
-
-const familiarity = ['Not Familiar','Familiar','Very Familiar']
-
-const schools = [
-  'Bonham Road Government Primary School',
-  'Carmel School, Hong Kong',
-  'Catholic Mission School',
-  'Central and Western District St. Anthonys School',
-  'Chiu Sheung School, Hong Kong',
-  'German Swiss International School',
-  'Glenealy School',
-  'The Harbour School',
-  'Hong Kong Academy',
-]
 
 class EditStudentProfileForm extends Component {
 
@@ -154,7 +140,7 @@ class EditStudentProfileForm extends Component {
               <div className="select is-fullwidth">
                 <Field name="schoolName" component="select" className="form-control" >
                 <option value="">Please choose an option</option>
-                  {schools.map(school =>
+                  {SCHOOLS.map(school =>
                     <option value={school} key={school}>{school}</option>)}
                 </Field>
               </div>
@@ -178,7 +164,7 @@ class EditStudentProfileForm extends Component {
               <div className="select is-fullwidth">
                 <Field name="googleSlides" component="select" className="form-control" >
                 <option value="">Please choose an option</option>
-                  {familiarity.map(op =>
+                  {FAMILIARITY.map(op =>
                     <option value={op} key={op}>{op}</option>)}
                 </Field>
               </div>
@@ -196,7 +182,7 @@ class EditStudentProfileForm extends Component {
               <div className="select is-fullwidth">
                 <Field name="googleDocs" component="select" className="form-control" >
                 <option value="">Please choose an option</option>
-                  {familiarity.map(op =>
+                  {FAMILIARITY.map(op =>
                     <option value={op} key={op}>{op}</option>)}
                 </Field>
               </div>
@@ -214,7 +200,7 @@ class EditStudentProfileForm extends Component {
               <div className="select is-fullwidth">
                 <Field name="microsoftOffice" component="select" className="form-control" >
                 <option value="">Please choose an option</option>
-                  {familiarity.map(op =>
+                  {FAMILIARITY.map(op =>
                     <option value={op} key={op}>{op}</option>)}
                 </Field>
               </div>

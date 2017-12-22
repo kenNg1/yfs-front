@@ -9,31 +9,42 @@ const mapDispatchToProps = {
   signInUser: actions.signInUser,
 }
 
+const mapStateToProps = state => {
+  return {
+    errorMessage:state.userInfo.error
+  }
+}
+
 class Signin extends Component {
+
   submit = (values) => {
     this.props.signInUser(values, () => {
-      this.props.history.push('/')
-    })
+      this.props.history.push('/profile');      
+    })    
   }
+
+  renderAlert(){
+    if(this.props.errorMessage){
+      return(
+        <div className="notification is-danger fade-in-animation" style={{position:'absolute',width:"300px",margin:"0 auto",left:0,right:0,zIndex:999}}>
+          <strong>Oops!</strong> {this.props.errorMessage}         
+        </div>
+      )
+    }
+  }
+
   render(){
+    console.log(this.props);
+    console.log("hello");
+        
     const landingBackground = {
       width: "100vw",
-      height: "100%",
-      minHeight: '100vh',
-      backgroundColor: "#f0ad4e"
     }
-    const centerText = {
-      position: 'absolute',
-      left: '50%',
-      top: '50%',
-      WebkitTransform: 'translate(-50%, -50%)',
-      transform: 'translate(-50%, -50%)',
-      color: 'white',
-      fontSize: '40px'
-    }
+
     return (
       <div className='container-fluid' style={landingBackground}>
-        <div className='contanier' style={centerText}>
+        <div className='container'>
+          {this.renderAlert()}
           <SigninForm onSubmit={this.submit}/>
         </div>
       </div>
@@ -41,4 +52,4 @@ class Signin extends Component {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Signin);
+export default connect(mapStateToProps, mapDispatchToProps)(Signin);

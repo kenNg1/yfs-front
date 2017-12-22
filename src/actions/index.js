@@ -1,6 +1,7 @@
 import axios from 'axios'
 import moment from 'moment'
 
+export const AUTH_ERROR = 'AUTH_ERROR'
 export const SIGN_UP = 'SIGN_UP'
 export const SIGN_IN = 'SIGN_IN'
 export const LOG_OUT = 'LOG_OUT'
@@ -10,14 +11,29 @@ export const EDIT_MENTOR_PROFILE = 'EDIT_MENTOR_PROFILE'
 export const EDIT_STUDENT_PROFILE = 'EDIT_STUDENT_PROFILE'
 export const GET_EVENTS = 'GET_EVENTS'
 export const GET_EVENT = 'GET_EVENT'
+export const REGISTER_EVENT = 'REGISTER_EVENT'
 
 // const ROOT_URL = 'http://localhost:8000'
 const ROOT_URL = ''
+
+export const registerEvent = (values, callback) => {
+  return dispatch => {
+    axios.post(`${ROOT_URL}/api/students/register-event/${values.eventId}`, values)
+    .then(response => {
+      dispatch({type: REGISTER_EVENT, payload: response.data});
+    })
+  }
+}
 
 export const signUpUser = (values, callback) => {
   return dispatch => {
     axios.post(`${ROOT_URL}/register`, values)
     .then(response => {
+      localStorage.setItem('id', response.data.id)
+      localStorage.setItem('email', response.data.email)
+      localStorage.setItem('tier', response.data.tier)
+      localStorage.setItem('token', response.data.token)
+      localStorage.setItem('firstName', response.data.firstName)   
       callback();
       dispatch({type: SIGN_UP, payload: response.data});
     })
@@ -28,9 +44,29 @@ export const signInUser = (values, callback) => {
   return dispatch => {
     axios.post(`${ROOT_URL}/login`, values)
     .then(response => {
+      localStorage.setItem('id', response.data.id)
+      localStorage.setItem('email', response.data.email)
+      localStorage.setItem('tier', response.data.tier)
+      localStorage.setItem('token', response.data.token)      
+      localStorage.setItem('firstName', response.data.firstName)   
       callback()
-      dispatch({type: SIGN_IN, payload: response.data});
+      dispatch({type: SIGN_IN, payload: response.data, message:"Successfully signed in"});
+      setTimeout(() => {
+        dispatch({ type:SIGN_IN, payload: response.data, message:null })
+      }, 3000)
     })
+    .catch(error =>{
+      dispatch(authError(error.response.data.message))
+    })
+  }
+}
+
+export const authError = (error) => {
+  return dispatch => {
+    dispatch({type: AUTH_ERROR, payload:error})
+    setTimeout(() => {
+      dispatch({ type:AUTH_ERROR, payload:null })
+    }, 2000)
   }
 }
 
@@ -50,7 +86,7 @@ export const studentProfile = (id, callback) => {
     console.log('user',response.data)
       dispatch({type: STUDENT_PROFILE, payload: response.data})
     })
-    .catch(error => console.log(error))    
+    .catch(error => {})    
   }
 }
 
@@ -70,7 +106,7 @@ export const mentorProfile = (id, callback) => {
     .then(response => {
       dispatch({type: MENTOR_PROFILE, payload: response.data});
     })
-    .catch(error => console.log(error))
+    .catch(error => {})
   }
 }
 

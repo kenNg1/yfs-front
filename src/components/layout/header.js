@@ -59,7 +59,7 @@ class Header extends Component {
       loginPanel = 
         <div>               
             <div className="navbar-item has-dropdown is-hoverable">
-              <Link to={'/profile'} className="navbar-link" onClick={this.closeBurgerHandler}>Welcome {firstName}</Link>
+              <Link to={'/profile'} className="navbar-link" onClick={this.closeBurgerHandler}>Welcome<b> &nbsp;{firstName}</b></Link>
               <div className="navbar-dropdown">
               <Link to={'/profile'} className="navbar-item" onClick={this.closeBurgerHandler}>Profile</Link>      
               <hr className="navbar-divider" />
@@ -77,7 +77,7 @@ class Header extends Component {
           <img src={logoGlobe} alt="Young Founders School: A Start up Bootcamp for High School Students" className="logoGlobe" />
           <div className="brand">
             <p className="title is-4">Young Founders School</p>
-            <p className="subtitle is-5">Sponsored by Credit Suisse</p>
+            <p className="subtitle is-5" style={{color:'hsl(217, 63%, 43%)'}}>Sponsored by Credit Suisse</p>
           </div>
         </Link>
 
@@ -88,20 +88,20 @@ class Header extends Component {
       <div id="navMenuColorwhite-example" className={this.state.navbarMenuClasses.join(" ")}>
         <div className="navbar-start">
         </div>
-    
         <div className="navbar-end">
               <Link to={'/events'} onClick={this.closeBurgerHandler} className="navbar-item">
                 Programs
               </Link>
-              <Link to={'/contact'} onClick={this.closeBurgerHandler} className="navbar-item">
+              <Link to={'/gallery'} onClick={this.closeBurgerHandler} className="navbar-item">
                 Gallery
               </Link>
               <Link to={'/contact'} onClick={this.closeBurgerHandler} className="navbar-item">
-                Contact
+                Contact Us
               </Link>
-              <Link to={'/contact'} onClick={this.closeBurgerHandler} className="navbar-item">
+              <Link to={'/mentor'} onClick={this.closeBurgerHandler} className="navbar-item">
                 Be a Mentor!
               </Link>
+              <hr/>
               {loginPanel}
         </div>
       </div>

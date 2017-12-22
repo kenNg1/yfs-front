@@ -34,7 +34,6 @@
 .cardLeftTopDetails {
   position: absolute;
   top: 0px;
-  right: 0px;
   padding: 0px 5px;
   margin: 5px;
   border-radius: 5px;
@@ -53,7 +52,7 @@
   bottom: 0px;
   width:100%;
   text-align:right;
-  background-color:#024b71;
+  background-color:hsl(217, 63%, 43%)	;
   color: white
 }
 
@@ -75,5 +74,11 @@
   margin-top:10px;
 }
 
+div.tabs.is-right ul {
+  margin-top:-60px;
+}
 
+div.dropdown-trigger a, a.dropdown-filter {
+  border-bottom:none;
+}
 

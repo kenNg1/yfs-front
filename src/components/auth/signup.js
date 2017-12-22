@@ -11,6 +11,7 @@ const mapDispatchToProps = {
 class Signup extends Component {
 
   submit = (values) => {
+    console.log(values)
     this.props.signUpUser(values, () => {
       this.props.history.push('/')
     })
@@ -24,13 +25,11 @@ class Signup extends Component {
       paddingBottom: '3vh',
       width: "100vw",
       height: "100%",
-      minHeight: '100vh',
-      backgroundColor: "#5bc0de"
-    }
+      minHeight: '100vh'
+      }
     const centerText = {
       position: 'relative',
       width: '100%',
-      height: '100%',
       color: 'black'
     }
     return (

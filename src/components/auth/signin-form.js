@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 
+
 let SigninForm = props => {
+  console.log(props);
   const { handleSubmit } = props
   return (
     <div>
@@ -11,17 +13,43 @@ let SigninForm = props => {
       <br/>
       <br/>
       <form onSubmit={ handleSubmit }>
-        <div className="form-group">
-          <label htmlFor="email"><h3>Email</h3></label>
-          <Field name="username" component="input" type="email" className="form-control" />
+        <div className="field is-horizontal has-addons-centered">
+          <div className="field-label is-normal">
+            <label className="label">Email</label>
+          </div>
+          <div className="field-body">
+            <div className="field is-narrow">
+              <p className="control is-expanded has-icons-left has-icons-right">
+                  <Field name="username" component="input" type="email" placeholder="Email" className="input" />
+                  <span className="icon is-small is-left">
+                    <i className="fa fa-envelope"></i>
+                  </span>
+                </p>
+            </div>
+          </div>
         </div>
-        <div className="form-group">
-          <label htmlFor="password"><h3>Password</h3></label>
-          <Field name="password" component="input" type="password" className="form-control" />
+        <div className="field is-horizontal has-addons-centered">
+          <div className="field-label is-normal ">
+            <label className="label">Password</label>
+          </div>
+          <div className="field-body">
+            <div className="field is-narrow ">
+              <p className="control is-expanded has-icons-left has-icons-right">
+                  <Field name="password" component="input" type="password" placeholder="Password" className="input" />
+                  <span className="icon is-small is-left">
+                    <i className="fa fa-unlock"></i>
+                  </span>
+                </p>
+            </div>
+          </div>
         </div>
-        <button type="submit" className='btn btn-primary'>Submit</button>
+        <br/>
+        <div style={{marginLeft:'21%'}}>
+        <button type="submit" className='button is-primary'>Sign In</button> &nbsp;<Link to='/signup' className='button is-info'>Sign up</Link>
+        <Link to='/forgotpassword' className='button is-danger is-inverted'>Forgotten password?</Link>
+        </div>
       </form>
-      <Link to='/signup'><h3>Sign up instead</h3></Link>
+      
     </div>
   )
 }

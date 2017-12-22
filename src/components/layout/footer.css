@@ -5,10 +5,10 @@
 }
 
 #myFooter .logo {
-    max-width: 380px;
     box-sizing:border-box;
     padding: 10px;
 }
+
 
 #myFooter .footer-copyright {
     background-color: #333333;
@@ -51,6 +51,11 @@
 @media (min-width:1000px){
     #myFooter h5, #myFooter h2, #myFooter .logo {
     margin-top: 25px;        
+    }
+
+
+    #myFooter .logo {
+        max-width: 380px;
     }
 }
 
