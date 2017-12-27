@@ -48,6 +48,38 @@ let SignupForm = props => {
               </div>
             </div>
           </div>
+
+          <div className="field is-horizontal">
+            <div className="field-label is-normal">
+              <label className="label">Password *</label>
+            </div>
+            <div className="field-body">
+              <div className="field is-narrow">
+                <p className="control has-icons-left">
+                  <Field name="password" component="input" type="password" placeholder="Password" className='input'/>
+                  <span className="icon is-small is-left">
+                    <i className="fa fa-unlock"></i>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+    
+          <div className="field is-horizontal">
+            <div className="field-label is-normal">
+              <label className="label">Password Confirmation*</label>
+            </div>
+            <div className="field-body">
+              <div className="field is-narrow">
+                <p className="control has-icons-left">
+                  <Field name="password1" component="input" type="password" placeholder="Password confirmation" className='input'/>
+                  <span className="icon is-small is-left">
+                    <i className="fa fa-unlock"></i>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
     
           <div className="field is-horizontal">
             <div className="field-label is-normal">

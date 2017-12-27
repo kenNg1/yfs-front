@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import styles from './event_index.css';
 import * as actions from '../../actions';
 import moment from 'moment';
+import placeholderImg from '../images/placeholder480x320.png';
+import {COUNTRIES} from '../UI/formOptions';
 
 const mapStateToProps = state => ({
   eventIndex: state.eventInfo.events
@@ -15,6 +17,11 @@ const mapDispatchToProps = {
 
 class EventIndex extends Component {
   
+  state = {
+    selectedCountry: null,
+    ddClasses:['dropdown']
+  }
+
   componentDidMount() {
     window.scrollTo(0, 0);    
     this.props.getEvents()
@@ -25,7 +32,28 @@ class EventIndex extends Component {
     return full? "Full": null
   }
 
+  closeDDHandler = () => {
+    this.setState({ddClasses:["dropdown"]});    
+  }
+
+  toggleDDHandler = () => {
+    if(this.state.ddClasses.indexOf("is-active")===-1){
+      this.setState({ddClasses:["dropdown","is-active"]});    
+    } else {
+      this.closeDDHandler();   
+    }
+  }
+
   renderEvents(eventList){
+
+    if(this.state.selectedCountry !== null){
+      console.log(this.state.selectedCountry)
+      eventList = eventList.filter(ev => {
+        return ev.country.name === this.state.selectedCountry;
+      })
+      console.log(eventList)
+    }
+
     return eventList.map(event => {
 
       const date = moment(event.date).format("DD-MM-YYYY")
@@ -61,7 +89,7 @@ class EventIndex extends Component {
 
               <div className="column is-4 is-two-thirds-mobile cardRight">
                 <div className="card">
-                  <img src="https://bulma.io/images/placeholders/480x320.png" />
+                  <img src={placeholderImg} />
                   <div className='cardLeftTopDetails'>
                     <p>{this.renderFull(event.studentsMax,event.studentsIn)}</p>
                   </div>
@@ -79,8 +107,15 @@ class EventIndex extends Component {
     })
   }
 
+  countryClickHandler = (country,e) => {
+    this.setState({
+      selectedCountry:country,
+    })
+  }
+
   render(){
-          
+    
+
     if (this.props.eventIndex.length === 0) {
       return(
         <h1>loading</h1>
@@ -88,6 +123,7 @@ class EventIndex extends Component {
     }
     
     if (this.props.eventIndex.length > 0) {
+
       return (
         <div id="eventsIndex" className='container-fluid'>
           <br />
@@ -107,10 +143,10 @@ class EventIndex extends Component {
 
             <ul>
 
-            <div className="dropdown is-hoverable">
+            <div className={this.state.ddClasses.join(' ')} onClick={this.toggleDDHandler}>
               <div className="dropdown-trigger">
                 <a aria-haspopup="true" aria-controls="dropdown-menu">
-                  <span>Country</span>
+                  <span>Sort by Country</span>
                   <span className="icon is-small">
                     <i className="fa fa-angle-down" aria-hidden="true"></i>
                   </span>
@@ -118,25 +154,24 @@ class EventIndex extends Component {
               </div>
               <div className="dropdown-menu" id="dropdown-menu" role="menu">
                 <div className="dropdown-content">
-                  <a className="dropdown-item">
-                    Hong Kong
-                  </a>
-                  <a className="dropdown-item">
-                    China
-                  </a>
+                  {COUNTRIES.map((country,index) => {
+                    return <a className="dropdown-item" onClick={(e)=>this.countryClickHandler(country,e)} key={index}>
+                     {country}
+                    </a>
+                  })}
                 </div>
               </div>
             </div>
 
               <li>
                 <a className="dropdown-filter">
-                  <span>Date</span>
+                  <span>Sort by Date</span>
                   <span className="icon"><i className="fa fa-angle-down"></i></span>
                 </a>
               </li>
             </ul>
           </div>
-
+              {this.state.selectedCountry? <p className="title is-4">Events in {this.state.selectedCountry}</p> : null}
               {this.renderEvents(this.props.eventIndex)}
           </div>
 

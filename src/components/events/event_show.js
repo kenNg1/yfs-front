@@ -5,6 +5,7 @@ import * as actions from '../../actions'
 import styles from './event_show.css';
 import RegisterEventForm from './register_event'
 import moment from 'moment';
+import placeholderImg from '../images/placeholder480x320.png'
 
 const mapStateToProps = state => ({
   selectedEvent: state.eventInfo.selectedEvent
@@ -165,7 +166,7 @@ class TopEventInfo extends Component {
 
           <div className="column is-4 is-two-thirds-mobile cardRight">
             <div className="card">
-              <img src="https://bulma.io/images/placeholders/480x320.png" />
+              <img src={placeholderImg} />
               <div className='cardLeftTopDetails'>
                 <p>{this.renderFull(event.studentsMax,event.studentsIn)}</p>
               </div>
