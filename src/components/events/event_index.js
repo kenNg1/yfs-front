@@ -60,23 +60,6 @@ class EventIndex extends Component {
 
       return (
         <Link key={`id-${event.id}`} to={`/events/${event.id}`}>
-          {/* <div className='card eventCard' key={event.id}>
-            <div className='cardLeft'>
-              <img style={{backgroundImage: `url(${event.image})`, backgroundSize: 'cover'}} />
-              <div className='cardLeftTopDetails'>
-                <p>{this.renderFull(event.studentsMax,event.studentsIn)}</p>
-              </div>
-              <div className='cardLeftBottomDetails'>
-                <h5>HK${parseInt(event.price, 10).toLocaleString()}</h5>
-              </div>
-            </div>
-            <div className='cardRight'>
-              <h3 className='date'>{date}</h3>
-              <h3>{event.name.slice(0,25)}</h3>
-              <p>{event.shortInfo.slice(0,100)} ...</p>
-              <p className='location'>{event.location}</p>
-            </div>
-          </div> */}
 
           <div id="eventShow" className="box"> 
             <div className="columns is-centered">
@@ -174,9 +157,6 @@ class EventIndex extends Component {
               {this.state.selectedCountry? <p className="title is-4">Events in {this.state.selectedCountry}</p> : null}
               {this.renderEvents(this.props.eventIndex)}
           </div>
-
-
-
         </div>
       )
     }

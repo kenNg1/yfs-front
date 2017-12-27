@@ -20,7 +20,7 @@ class Gallery extends Component {
 
     return (
       <div id="profile" className='container-fluid' style={landingBackground} >
-      <div className="container" style={{padding:10% 0}}>
+      <div className="container" style={{padding:'10% 0'}}>
         <br/>
         <div className="tile is-ancestor">
           <div className="tile is-6 is-vertical is-parent">

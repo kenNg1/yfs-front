@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
-import {COUNTRIES, HEARS, SCHOOLS, FAMILIARITY} from '../UI/formOptions'
+import {ALLCOUNTRIES, HEARS, SCHOOLS, FAMILIARITY} from '../UI/formOptions'
 
 let SignupForm = props => {
   const { handleSubmit, load, pristine, reset, submitting } = props
@@ -91,6 +91,25 @@ let SignupForm = props => {
               </div>
             </div>
           </div>
+
+          <div className="field is-horizontal">
+            <div className="field-label is-normal">
+              <label className="label">Country of residence</label>
+            </div>
+            <div className="field-body">
+              <div className="field is-narrow">
+                <div className="control">
+                  <div className="select is-fullwidth">
+                    <Field name="countryName" component="select" className="form-control" >
+                    <option value="">Select a country... </option>
+                      {ALLCOUNTRIES.map(country =>
+                        <option value={country} key={country}>{country}</option>)}
+                    </Field>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           
           <div className="field is-horizontal">
             <div className="field-label is-normal">
@@ -130,7 +149,7 @@ let SignupForm = props => {
               </div>
             </div>
           </div>
-          
+
           <div className="field is-horizontal">
             <div className="field-label is-normal">
               <label className="label">School</label>
