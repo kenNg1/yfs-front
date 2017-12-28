@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom'
-import { connect } from 'react-redux';
-import { Field, reduxForm, initialize, formValueSelector } from 'redux-form'
-import * as actions from '../../actions';
-import {COUNTRIES, HEARS, SCHOOLS, FAMILIARITY} from '../UI/formOptions'
+import { Field, reduxForm } from 'redux-form'
+import {SCHOOLS, FAMILIARITY} from '../UI/formOptions'
 
 
 class EditStudentProfileForm extends Component {
@@ -24,11 +21,8 @@ class EditStudentProfileForm extends Component {
   }
 
   render(){
-    const { handleSubmit, fieldDisabled, load, pristine, reset, submitting } = this.props
+    const { handleSubmit, pristine, reset, submitting } = this.props
 
-    const radioLabelMargins = {
-      marginRight: '10px',
-    }
     const radioButtonMargins = {
       marginRight: '10px',
     }   
@@ -39,7 +33,6 @@ class EditStudentProfileForm extends Component {
         <div>loading...</div>
       )
     } else {
-      const user = this.props.userProfile
       console.log(this.props)
       return (
         <div className="container"> 
@@ -315,8 +308,7 @@ class EditStudentProfileForm extends Component {
 }
 
 
-const selector = formValueSelector('editStudentProfile')
-
+// const selector = formValueSelector('editStudentProfile')
 
 const form = reduxForm({  
   form: 'editStudentProfile'

@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { logOut } from '../../actions'
 import logoGlobe from './logo-globe.png';
-import styles from './header.css'
+import './header.css'
 
 const mapStateToProps = state => ({
   loggedIn: state.userInfo.loggedIn,

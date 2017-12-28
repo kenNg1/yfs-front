@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import './profile.css'
 import * as actions from '../../actions';
-import styles from './profile.css';
 import moment from 'moment'
 
 const mapStateToProps = state => {
@@ -39,8 +39,6 @@ class Profile extends Component {
             
     }
     
-       
-    
   }
 
   componentDidUpdate(){
@@ -57,6 +55,7 @@ class Profile extends Component {
      }
     
     let registeredEvents = null;
+    let eventsPageButton = null;
 
     if( !this.props.userProfile){
       return (
@@ -66,6 +65,7 @@ class Profile extends Component {
       const userProfile = this.props.userProfile
       const dob = moment(userProfile.dob).format("DD-MM-YYYY")
 
+      
       registeredEvents =  this.props.userProfile.events.map(event => {
         
         let status = null;
@@ -108,7 +108,13 @@ class Profile extends Component {
       })
 
       if(registeredEvents.length===0){
-        registeredEvents = <p>No Registered events</p>
+        registeredEvents = <tr className="table-row">
+                            <td colSpan="4" style={{textAlign:'center'}}>No Registered Events</td>
+                          </tr>
+        eventsPageButton = 
+          <div className="has-text-centered" style={{marginTop:'10px'}}>
+            <Link to='/events' className="button is-danger is-inverted">See Events</Link>
+          </div>
       }
 
       return (
@@ -133,6 +139,7 @@ class Profile extends Component {
                           {registeredEvents}
                       </tbody>
                     </table>
+                    {eventsPageButton}
                   </div>
                 </div>
                 <div className="tile is-6 is-vertical is-parent">

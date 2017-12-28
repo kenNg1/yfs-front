@@ -1,14 +1,10 @@
-import React, {Component} from 'react';
-import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
+import React from 'react';
 import { Field, reduxForm } from 'redux-form'
-import {ALLCOUNTRIES, HEARS, SCHOOLS, FAMILIARITY} from '../UI/formOptions'
+import { ALLCOUNTRIES, SCHOOLS, FAMILIARITY } from '../UI/formOptions'
 
 let SignupForm = props => {
-  const { handleSubmit, load, pristine, reset, submitting } = props
-  const radioLabelMargins = {
-    marginRight: '10px',
-  }
+  const { handleSubmit, pristine, reset, submitting } = props
+
   const radioButtonMargins = {
     marginRight: '10px',
   }

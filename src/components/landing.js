@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 // import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
+import './landing.css'
+
 // import hero from './hero2.png';
-import styles from './landing.css';
 // below is example only
-import logo from '../components/layout/logo-globe.png';
 import heroImg from './images/hero2-b.jpg';
 import about2Img from './images/about2-edited-image.png'
 import awardImg from './images/icon_Award.png'
@@ -51,21 +51,21 @@ class Landing extends Component {
           <div className='container'>
             <div className="columns is-desktop is-vcentered">
                 <div className="column has-text-centered">
-                    <img className="logo" src={awardImg}/>
+                    <img className="logo" src={awardImg} alt=''/>
                     <h4 className="subtitle is-5">Real-life experience for your CV</h4>
                 </div>
                 <div className="column has-text-centered">
-                    <img className="logo" src={podiumImg}/>
+                    <img className="logo" src={podiumImg} alt=''/>
                     <h4 className="subtitle is-5">Pitch to real investors who judge your data</h4>
                 </div>
                 <div className="column has-text-centered">
-                    <img className="logo" src={mentorImg}/>
+                    <img className="logo" src={mentorImg} alt=''/>
                     <h4 className="subtitle is-5">Gain long-term mentorship & intern opportunities</h4>
                 </div>
             </div>
             <div className="columns is-desktop is-vcentered">
                 <div className="column has-text-centered">
-                    <img className="logo" src={mapImg}/>
+                    <img className="logo" src={mapImg} alt=''/>
                     <h4 className="subtitle is-5">Get international exposure and industry insights</h4>
                 </div>
                 <div className="column has-text-centered">
@@ -113,10 +113,10 @@ class Landing extends Component {
             <div className="column is-three-quarters has-text-centered">
               <div className="columns">
                 <div className="column">
-                  <img className="about1" src={gallery1}/>
+                  <img className="about1" src={gallery1} alt=''/>
                 </div>
                 <div className="column">
-                  <img className="about2" src={about2Img}/>
+                  <img className="about2" src={about2Img} alt=''/>
                 </div>
               </div>
             </div>

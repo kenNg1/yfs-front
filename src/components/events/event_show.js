@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import './event_show.css'
+
 import * as actions from '../../actions'
-import styles from './event_show.css';
 import RegisterEventForm from './register_event'
 import moment from 'moment';
 import placeholderImg from '../images/placeholder480x320.png'
@@ -46,13 +47,6 @@ class EventShow extends Component {
 
   render(){
     console.log("event-show-props",this.props)
-
-    const centerText = {
-      width: '500px',
-      height: '100%',
-      color: 'grey',
-      margin: 'auto'
-    }
     
     let modal = null;
     let modalForm = null;
@@ -166,7 +160,7 @@ class TopEventInfo extends Component {
 
           <div className="column is-4 is-two-thirds-mobile cardRight">
             <div className="card">
-              <img src={placeholderImg} />
+              <img src={placeholderImg} alt=''/>
               <div className='cardLeftTopDetails'>
                 <p>{this.renderFull(event.studentsMax,event.studentsIn)}</p>
               </div>

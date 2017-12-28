@@ -1,5 +1,9 @@
 /* global styles */
 
+div#eventShow.box {
+  margin-bottom:10px;
+}
+
 .container-fluid {
   padding-bottom: 3vh;
   width: 99vw;

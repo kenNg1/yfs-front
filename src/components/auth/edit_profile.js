@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import EditStudentProfileForm from './edit_student_profile_form';
 import * as actions from '../../actions';

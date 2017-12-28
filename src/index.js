@@ -8,7 +8,7 @@ import { persistStore, autoRehydrate } from 'redux-persist'
 // import logger from 'redux-logger';
 
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route, Link, Switch, withRouter} from 'react-router-dom'
+import { BrowserRouter, Route, Switch} from 'react-router-dom'
 
 import Header from './components/layout/header';
 import Footer from './components/layout/footer';

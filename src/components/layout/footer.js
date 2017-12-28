@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
-import styles from './footer.css'
 import logo from './logo.png';
+import './footer.css'
 
 class Footer extends Component {
   render(){
@@ -10,7 +9,7 @@ class Footer extends Component {
         <div className="container">
             <div className="columns">
                 <div className="column">
-                    <img className="logo" src={logo}/>
+                    <img className="logo" src={logo} alt=''/>
                 </div>
                 <div className="column">
                     <h5>About us</h5>
@@ -29,7 +28,7 @@ class Footer extends Component {
                     <div className="social-networks">
                         <a href="/" className="facebook"><i className="fab fa-facebook"></i></a>
                         <a href="/" className="youtube"><i className="fab fa-youtube"></i></a>
-                        <a href="/" className="instragram"><i className="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="/" className="instagram"><i className="fab fa-instagram"></i></a>
                         <a href="/" className="google"><i className="fab fa-google-plus"></i></a>
                     </div>
                     <button type="button" className="btn btn-default">Contact us</button>

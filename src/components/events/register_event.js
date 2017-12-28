@@ -1,11 +1,5 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom'
-import { connect } from 'react-redux';
-import { Field, reduxForm, initialize } from 'redux-form'
-import {COUNTRIES, HEARS, SCHOOLS, FAMILIARITY} from '../UI/formOptions'
-
-
-
+import { Field, reduxForm } from 'redux-form'
 
 class RegisterEventForm extends Component {
 
@@ -19,14 +13,8 @@ class RegisterEventForm extends Component {
   }
 
   render(){
-    const { handleSubmit, fieldDisabled, load, pristine, reset, submitting } = this.props
+    const { handleSubmit, pristine, reset, submitting } = this.props
     console.log(this.props)
-    const radioLabelMargins = {
-      marginRight: '10px',
-    }
-    const radioButtonMargins = {
-      marginRight: '10px',
-    }   
   
     let additionalQuestions = null;
 

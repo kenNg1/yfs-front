@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import styles from './event_index.css';
+import './event_index.css'
 import * as actions from '../../actions';
 import moment from 'moment';
 import placeholderImg from '../images/placeholder480x320.png';
@@ -19,6 +19,7 @@ class EventIndex extends Component {
   
   state = {
     selectedCountry: null,
+    dateOrder:'ascending',
     ddClasses:['dropdown']
   }
 
@@ -44,17 +45,59 @@ class EventIndex extends Component {
     }
   }
 
-  renderEvents(eventList){
+  countryClickHandler = (country) => {
+    if(country!==null){
+      this.setState({selectedCountry:country})
+    }
+  }
+
+  resetCountryHandler = () => {
+      this.setState({selectedCountry:null})
+  }
+
+  sortDateHandler = () => {
+    if(this.state.dateOrder === 'ascending'){
+      this.setState({dateOrder:'descending'})
+    } else {
+      this.setState({dateOrder:'ascending'})
+    }
+  }
+
+  render(){
+    
+    let renderedEvents = null;
+    let eventList = this.props.eventIndex;
+    let sortByDate = null;
+
+    if(this.state.dateOrder === 'ascending'){
+
+      eventList = eventList.sort((a,b)=> a.date>b.date)
+
+      sortByDate = 
+      <a className="dropdown-filter" onClick={()=>this.sortDateHandler()}>
+        <span>Sort by Date</span>
+          <span className="icon"><i className="fa fa-angle-down"></i></span>
+      </a>
+    } else {
+
+      eventList = eventList.sort((a,b)=> a.date<b.date)
+
+      sortByDate = 
+      <a className="dropdown-filter" onClick={()=>this.sortDateHandler()}>
+        <span>Sort by Date</span>
+          <span className="icon"><i className="fa fa-angle-up"></i></span>
+      </a>
+    } 
 
     if(this.state.selectedCountry !== null){
-      console.log(this.state.selectedCountry)
       eventList = eventList.filter(ev => {
         return ev.country.name === this.state.selectedCountry;
       })
-      console.log(eventList)
+    } else {
+      eventList = this.props.eventIndex;
     }
 
-    return eventList.map(event => {
+    renderedEvents = eventList.map(event => {
 
       const date = moment(event.date).format("DD-MM-YYYY")
 
@@ -63,16 +106,16 @@ class EventIndex extends Component {
 
           <div id="eventShow" className="box"> 
             <div className="columns is-centered">
-                <div className="column is-6 cardLeft">
-                    <h3 className='date'>{date}</h3>
-                    <p className="title is-5">{event.name}</p>
-                    <p>{event.shortInfo}</p>
-                </div>
-                <p className='location' style={{marginTop:'20px'}}><strong>Location:</strong> {event.location}</p>
+              <div className="column is-6 cardLeft">
+                  <h3 className='date'>{date}</h3>
+                  <p className="title is-5">{event.name}</p>
+                  <p>{event.shortInfo}</p>
+              </div>
+              <p className='location' style={{marginTop:'20px'}}><strong>Location:</strong> {event.location}</p>
 
               <div className="column is-4 is-two-thirds-mobile cardRight">
                 <div className="card">
-                  <img src={placeholderImg} />
+                  <img src={placeholderImg} alt=''/>
                   <div className='cardLeftTopDetails'>
                     <p>{this.renderFull(event.studentsMax,event.studentsIn)}</p>
                   </div>
@@ -88,16 +131,7 @@ class EventIndex extends Component {
         </Link>
       )
     })
-  }
 
-  countryClickHandler = (country,e) => {
-    this.setState({
-      selectedCountry:country,
-    })
-  }
-
-  render(){
-    
 
     if (this.props.eventIndex.length === 0) {
       return(
@@ -129,7 +163,7 @@ class EventIndex extends Component {
             <div className={this.state.ddClasses.join(' ')} onClick={this.toggleDDHandler}>
               <div className="dropdown-trigger">
                 <a aria-haspopup="true" aria-controls="dropdown-menu">
-                  <span>Sort by Country</span>
+                  <span>Filter by Country</span>
                   <span className="icon is-small">
                     <i className="fa fa-angle-down" aria-hidden="true"></i>
                   </span>
@@ -137,8 +171,11 @@ class EventIndex extends Component {
               </div>
               <div className="dropdown-menu" id="dropdown-menu" role="menu">
                 <div className="dropdown-content">
+                  <a className="dropdown-item" onClick={()=>this.resetCountryHandler()}>
+                     All Countries
+                  </a>
                   {COUNTRIES.map((country,index) => {
-                    return <a className="dropdown-item" onClick={(e)=>this.countryClickHandler(country,e)} key={index}>
+                    return <a className="dropdown-item" onClick={()=>this.countryClickHandler(country)} key={index}>
                      {country}
                     </a>
                   })}
@@ -147,15 +184,12 @@ class EventIndex extends Component {
             </div>
 
               <li>
-                <a className="dropdown-filter">
-                  <span>Sort by Date</span>
-                  <span className="icon"><i className="fa fa-angle-down"></i></span>
-                </a>
+                  {sortByDate}
               </li>
             </ul>
           </div>
-              {this.state.selectedCountry? <p className="title is-4">Events in {this.state.selectedCountry}</p> : null}
-              {this.renderEvents(this.props.eventIndex)}
+              {this.state.selectedCountry? <p className="title is-4">Events in {this.state.selectedCountry}</p> : <p className="title is-4">Events in all countries</p>}
+              {renderedEvents}
           </div>
         </div>
       )

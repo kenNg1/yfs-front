@@ -9,3 +9,10 @@
 #profile div.tile.is-child.notification.is-danger{
     padding: 0.25rem;
 }
+
+#profile a.button.is-danger.is-inverted {
+    cursor:'pointer'
+}
+#profile a.button.is-danger.is-inverted:hover {
+    text-decoration: underline
+}

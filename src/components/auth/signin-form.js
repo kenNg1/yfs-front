@@ -1,8 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
-
 
 let SigninForm = props => {
   console.log(props);
