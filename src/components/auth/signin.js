@@ -43,8 +43,8 @@ class Signin extends Component {
     return (
       <div className='container-fluid' style={landingBackground}>
         <div className='container'>
-          {this.renderAlert()}
           <SigninForm onSubmit={this.submit}/>
+          {this.renderAlert()}
         </div>
       </div>
     )

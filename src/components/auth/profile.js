@@ -41,13 +41,11 @@ class Profile extends Component {
     
   }
 
-  componentDidUpdate(){
+  goToActionHandler = (eventId) => {
+    this.props.history.push(`/events/${eventId}`);
+    console.log("INSTEAD OF CHANGING ROUTES, LETS BRING UP THE REG INFO AS A MODAL")
   }
   
-  registeredEvents(eventList){
-    
-  }
-
   render(){
     
     const landingBackground = {
@@ -69,19 +67,17 @@ class Profile extends Component {
       registeredEvents =  this.props.userProfile.events.map(event => {
         
         let status = null;
-        
+        const date = moment(event.date).format("DD-MM-YYYY")
+
         if(event.event_student.status === "Pending"){
           status = <button className="button is-danger is-outlined">Registration Pending</button>
-
         } else if(event.event_student.status === "Accepted") {
           status = <button className="button is-link is-inverted">Accepted</button>
-
         } else if(event.event_student.status === "Cancelled"){
           status = <button className="button">Application cancelled</button>         
-
         }
 
-        const date = moment(event.date).format("DD-MM-YYYY")
+        
         if( !this.props.userProfile.events){
           return (
             <div key={`id-${event.id}`}>Loading...</div>
@@ -89,18 +85,22 @@ class Profile extends Component {
         } else {
           let statusButton = null;
           if(event.event_student.status === "Accepted"){
-            statusButton = <button className="button is-link is-small">Confirm</button>
+            statusButton = <button onClick={()=>this.goToActionHandler(event.id)} className="button is-link is-small">Confirm</button>
           } else if(event.event_student.status === "Pending" || event.event_student.status === "Confirmed" ) {
-            statusButton = <button className="button is-danger is-small">Cancel</button>           
+            statusButton = <button onClick={()=>this.goToActionHandler(event.id)} className="button is-danger is-small">Cancel</button>           
           } else if(event.event_student.status === "Cancelled"){
-            statusButton = <button className="button is-primary is-small">Undo</button>                       
+            statusButton = <button onClick={()=>this.goToActionHandler(event.id)} className="button is-primary is-small">Undo</button>                       
           }
 
           return (
               <tr className="table-row" key={`id-${event.id}`}>
-                <td>{date}</td>
-                <td><Link to={`/events/${event.id}`}>{event.name.slice(0,35)}</Link></td>
-                <td>{event.country.name}</td>
+                <td className="table-row-info" onClick={()=>{setTimeout(() => {
+                                    this.props.history.push(`/events/${event.id}`)
+                              }, 200)}
+                            } colSpan="3" style={{paddingLeft:'1.25rem'}}>
+                            <em>{date}</em> | <em>{event.country.name}</em><br/>
+                <span>{event.name.slice(0,35)}</span>
+                </td>
                 <td>{event.event_student.status}<br/> {statusButton}</td>
               </tr>
               
@@ -125,13 +125,11 @@ class Profile extends Component {
               <div className="tile is-ancestor">
                 <div className="tile is-6 is-vertical is-parent">
                   <div className="tile is-child notification is-danger">
-                    <p className="title is-4" style={{paddingLeft:'1.5rem',paddingTop:'1.25rem'}}>My Programs</p>
+                    <p className="title is-4" style={{paddingLeft:'1.25rem',paddingTop:'1.25rem'}}>My Programs</p>
                     <table className="table">
                       <thead>
                         <tr>
-                          <th>DATE</th>
-                          <th>TITLE</th>
-                          <th>LOCATION</th>
+                          <th colSpan="3" style={{paddingLeft:'1.25rem'}}>REGISTERED PROGRAMS</th>
                           <th>STATUS</th>
                         </tr>
                       </thead>

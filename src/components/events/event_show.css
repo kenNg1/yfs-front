@@ -4,6 +4,12 @@
   align-items:center;
 }
 
+/* #eventShow p.title.is-4:hover {
+  transition:color 250ms ease;
+  color:pink;
+} */
+
+
 #eventShow .location {
   align-self: normal;
   margin-left:15px;
@@ -11,8 +17,18 @@
 
 #eventShow .column.is-4 {
   order:0
-} 
+}
 
+/* modal form */
+
+p.modal-card-title {
+  font-size: 23px;
+}
+
+footer.modal-card-foot {
+  padding:10px;
+  padding-left:1.25em;
+}
 
 @media (min-width:769px){
   #eventShow .columns.is-centered{

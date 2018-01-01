@@ -26,6 +26,8 @@ p {
   padding: 0.25em 0.5em;
 }
 
+
+
 @media(min-width:769px){
   .table td, .table th {
     font-size:115%;
@@ -38,9 +40,9 @@ p {
   font-size:0.7rem;
 }
 
-.table-row:hover{
+/* .table-row:hover{
   background-color:#00d1b228;
-}
+} */
   
 .navbar-burger {
   margin-top: 10px;

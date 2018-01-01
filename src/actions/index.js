@@ -12,6 +12,7 @@ export const EDIT_STUDENT_PROFILE = 'EDIT_STUDENT_PROFILE'
 export const GET_EVENTS = 'GET_EVENTS'
 export const GET_EVENT = 'GET_EVENT'
 export const REGISTER_EVENT = 'REGISTER_EVENT'
+export const CHANGE_EVENT_STATUS = 'CHANGE_EVENT_STATUS'
 
 // const ROOT_URL = 'http://localhost:8000'
 const ROOT_URL = ''
@@ -20,7 +21,18 @@ export const registerEvent = (values, callback) => {
   return dispatch => {
     axios.post(`${ROOT_URL}/api/students/register-event/${values.eventId}`, values)
     .then(response => {
+      callback(response.data)
       dispatch({type: REGISTER_EVENT, payload: response.data});
+    })
+  }
+}
+
+export const changeEventStatus = (values,callback) => {
+  return dispatch => {
+    axios.put(`${ROOT_URL}/api/students/register-event/${values.eventId}`, values)
+    .then(response => {
+      callback(response.data)
+      dispatch({type: CHANGE_EVENT_STATUS, payload: response.data});
     })
   }
 }
@@ -34,7 +46,7 @@ export const signUpUser = (values, callback) => {
       localStorage.setItem('tier', response.data.tier)
       localStorage.setItem('token', response.data.token)
       localStorage.setItem('firstName', response.data.firstName)   
-      callback();
+      callback(response);
       dispatch({type: SIGN_UP, payload: response.data});
     })
   }
@@ -66,7 +78,7 @@ export const authError = (error) => {
     dispatch({type: AUTH_ERROR, payload:error})
     setTimeout(() => {
       dispatch({ type:AUTH_ERROR, payload:null })
-    }, 2000)
+    }, 3500)
   }
 }
 

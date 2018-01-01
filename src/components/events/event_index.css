@@ -1,6 +1,12 @@
+#eventsIndex p.title.is-4 {
+  display:inline;
+  margin-right: 10px;
+} 
+
 /* global styles */
 
 div#eventShow.box {
+  margin-top: 15px;
   margin-bottom:10px;
 }
 

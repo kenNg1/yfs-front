@@ -188,7 +188,15 @@ class EventIndex extends Component {
               </li>
             </ul>
           </div>
-              {this.state.selectedCountry? <p className="title is-4">Events in {this.state.selectedCountry}</p> : <p className="title is-4">Events in all countries</p>}
+              {this.state.selectedCountry? 
+              <div>
+                <p className="title is-4">Events in {this.state.selectedCountry}</p>
+                <i className="fa fa-exclamation-circle" style={{color:"hsl(348, 100%, 61%)"}} aria-hidden="true"></i>
+              </div> : 
+              <div>
+                <p className="title is-4">Events in all countries</p>
+                <i className="fa fa-exclamation-circle" style={{color:"hsl(348, 100%, 61%)"}} aria-hidden="true"></i>
+              </div>}
               {renderedEvents}
           </div>
         </div>
