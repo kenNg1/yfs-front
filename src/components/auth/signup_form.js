@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form'
-import { ALLCOUNTRIES, SCHOOLS, FAMILIARITY } from '../UI/formOptions'
+import { ALLCOUNTRIES, CITIES, SCHOOLS, FAMILIARITY } from '../UI/formOptions'
+import '../../styles/animations.css'
 
 let SignupForm = props => {
   const { handleSubmit, pristine, reset, submitting } = props
@@ -9,10 +10,9 @@ let SignupForm = props => {
     marginRight: '10px',
   }
   return (
-    <div className="container"> 
+    <div className="container pullUp"> 
+            <p>PUT A FLIP TRANSITION HERE TO CHANGE FORM TYPE</p>
             <form onSubmit={handleSubmit} >
-              <p className="title is-3 is-spaced">SIGN UP</p>
-              <hr />
               <div className="field is-horizontal">
               <div className="field-label is-normal">
                 <label className="label">First Name *</label>
@@ -45,38 +45,7 @@ let SignupForm = props => {
             </div>
           </div>
 
-          <div className="field is-horizontal">
-            <div className="field-label is-normal">
-              <label className="label">Password *</label>
-            </div>
-            <div className="field-body">
-              <div className="field is-narrow">
-                <p className="control has-icons-left">
-                  <Field name="password" component="input" type="password" placeholder="Password" className='input'/>
-                  <span className="icon is-small is-left">
-                    <i className="fa fa-unlock"></i>
-                  </span>
-                </p>
-              </div>
-            </div>
-          </div>
-    
-          <div className="field is-horizontal">
-            <div className="field-label is-normal">
-              <label className="label">Password Confirmation*</label>
-            </div>
-            <div className="field-body">
-              <div className="field is-narrow">
-                <p className="control has-icons-left">
-                  <Field name="password1" component="input" type="password" placeholder="Password confirmation" className='input'/>
-                  <span className="icon is-small is-left">
-                    <i className="fa fa-unlock"></i>
-                  </span>
-                </p>
-              </div>
-            </div>
-          </div>
-    
+          {props.formType==="mentor"? null :
           <div className="field is-horizontal">
             <div className="field-label is-normal">
               <label className="label">Date of Birth *</label>
@@ -87,26 +56,8 @@ let SignupForm = props => {
               </div>
             </div>
           </div>
-
-          <div className="field is-horizontal">
-            <div className="field-label is-normal">
-              <label className="label">Country of residence</label>
-            </div>
-            <div className="field-body">
-              <div className="field is-narrow">
-                <div className="control">
-                  <div className="select is-fullwidth">
-                    <Field name="countryName" component="select" className="form-control" >
-                    <option value="">Select a country... </option>
-                      {ALLCOUNTRIES.map(country =>
-                        <option value={country} key={country}>{country}</option>)}
-                    </Field>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
+          }
+    
           <div className="field is-horizontal">
             <div className="field-label is-normal">
               <label className="label">Email *</label>
@@ -148,118 +99,291 @@ let SignupForm = props => {
 
           <div className="field is-horizontal">
             <div className="field-label is-normal">
-              <label className="label">School</label>
+              <label className="label">Country of residence</label>
             </div>
             <div className="field-body">
               <div className="field is-narrow">
                 <div className="control">
                   <div className="select is-fullwidth">
-                    <Field name="schoolName" component="select" className="form-control" >
-                    <option value="">Please choose an option</option>
-                      {SCHOOLS.map(school =>
-                        <option value={school} key={school}>{school}</option>)}
+                    <Field name="countryName" component="select" className="form-control" >
+                    <option value="">Select a country... </option>
+                      {ALLCOUNTRIES.map(country =>
+                        <option value={country} key={country}>{country}</option>)}
                     </Field>
                   </div>
                 </div>
-                <p className="help">Do not enter the first zero (example helpful note)</p>
               </div>
             </div>
           </div>
-    
-          <br />
-          <p className="subtitle is-4">Skills</p>
-          <hr />
-    
+
+          {props.formType==="student"? null :
           <div className="field is-horizontal">
             <div className="field-label is-normal">
-              <label className="label">How familiar are you with Google Slides?</label>
+              <label className="label">In which city would you like to participate with YFS?</label>
             </div>
             <div className="field-body">
               <div className="field is-narrow">
                 <div className="control">
                   <div className="select is-fullwidth">
-                    <Field name="googleSlides" component="select" className="form-control" >
-                    <option value="">Please choose an option</option>
-                      {FAMILIARITY.map(op =>
-                        <option value={op} key={op}>{op}</option>)}
+                    <Field name="cityName" component="select" className="form-control" >
+                    <option value="">Select a city... </option>
+                      {CITIES.map(city =>
+                        <option value={city} key={city}>{city}</option>)}
                     </Field>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="field is-horizontal">
-            <div className="field-label is-normal">
-              <label className="label">How familiar are you with Google Docs?</label>
-            </div>
-            <div className="field-body">
-              <div className="field is-narrow">
-                <div className="control">
-                  <div className="select is-fullwidth">
-                    <Field name="googleDocs" component="select" className="form-control" >
-                    <option value="">Please choose an option</option>
-                      {FAMILIARITY.map(op =>
-                        <option value={op} key={op}>{op}</option>)}
-                    </Field>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="field is-horizontal">
-            <div className="field-label is-normal">
-              <label className="label">How familiar are you with Microsoft Office?</label>
-            </div>
-            <div className="field-body">
-              <div className="field is-narrow">
-                <div className="control">
-                  <div className="select is-fullwidth">
-                    <Field name="microsoftOffice" component="select" className="form-control" >
-                    <option value="">Please choose an option</option>
-                      {FAMILIARITY.map(op =>
-                        <option value={op} key={op}>{op}</option>)}
-                    </Field>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          }
           
-          <br />
-          <p className="subtitle is-4">Plans</p>
-          <hr />
-    
-          <div className="field is-horizontal">
-            <div className="field-label">
-              <label className="label">Do you plan to go to university?</label>
-            </div>
-            <div className="field-body">
-              <div className="field">
-                <div className="control">
-                  <div className="select is-normal">
-                    <Field name="willGoUni" component="select" className="form-control" >
-                      <option>Yes</option>
-                      <option>No</option>
-                    </Field>
+          {props.formType==="mentor"? null :
+          <div>
+            <div className="field is-horizontal">
+              <div className="field-label is-normal">
+                <label className="label">School</label>
+              </div>
+              <div className="field-body">
+                <div className="field is-narrow">
+                  <div className="control">
+                    <div className="select is-fullwidth">
+                      <Field name="schoolName" component="select" className="form-control" >
+                      <option value="">Please choose an option</option>
+                        {SCHOOLS.map(school =>
+                          <option value={school} key={school}>{school}</option>)}
+                      </Field>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+            
+      
+            <br />
+            <p className="subtitle is-4">Skills</p>
+            <hr />
+      
+            <div className="field is-horizontal">
+              <div className="field-label is-normal">
+                <label className="label">How familiar are you with Google Slides?</label>
+              </div>
+              <div className="field-body">
+                <div className="field is-narrow">
+                  <div className="control">
+                    <div className="select is-fullwidth">
+                      <Field name="googleSlides" component="select" className="form-control" >
+                      <option value="">Please choose an option</option>
+                        {FAMILIARITY.map(op =>
+                          <option value={op} key={op}>{op}</option>)}
+                      </Field>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="field is-horizontal">
+              <div className="field-label is-normal">
+                <label className="label">How familiar are you with Google Docs?</label>
+              </div>
+              <div className="field-body">
+                <div className="field is-narrow">
+                  <div className="control">
+                    <div className="select is-fullwidth">
+                      <Field name="googleDocs" component="select" className="form-control" >
+                      <option value="">Please choose an option</option>
+                        {FAMILIARITY.map(op =>
+                          <option value={op} key={op}>{op}</option>)}
+                      </Field>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="field is-horizontal">
+              <div className="field-label is-normal">
+                <label className="label">How familiar are you with Microsoft Office?</label>
+              </div>
+              <div className="field-body">
+                <div className="field is-narrow">
+                  <div className="control">
+                    <div className="select is-fullwidth">
+                      <Field name="microsoftOffice" component="select" className="form-control" >
+                      <option value="">Please choose an option</option>
+                        {FAMILIARITY.map(op =>
+                          <option value={op} key={op}>{op}</option>)}
+                      </Field>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <br />
+            <p className="subtitle is-4">Plans</p>
+            <hr />
+      
+            <div className="field is-horizontal">
+              <div className="field-label">
+                <label className="label">Do you plan to go to university?</label>
+              </div>
+              <div className="field-body">
+                <div className="field">
+                  <div className="control">
+                    <div className="select is-normal">
+                      <Field name="willGoUni" component="select" className="form-control" >
+                        <option>Yes</option>
+                        <option>No</option>
+                      </Field>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      
+            <div className="field is-horizontal">
+              <div className="field-label is-normal">
+                <label className="label">What university do you plan to go to?</label>
+              </div>
+              <div className="field-body">
+                <div className="field is-narrow">
+                  <p className="control is-normal">
+                    <Field name="desiredUniversity" component="input" type="text" placeholder="Your first choice" className='input'/>
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
-    
+          }
+
+          {props.formType==="student"? null :
+          <div>
+            <br/>
+            <p className="subtitle is-4">Experience</p>
+            <hr />
+            <div className="field is-horizontal">
+              <div className="field-label is-normal">
+                <label className="label">What industry are you currently in?</label>
+              </div>
+              <div className="field-body">
+                <div className="field is-narrow">
+                  <p className="control is-normal">
+                    <Field name="industry" component="input" type="text" placeholder="Select from the dropdown (placeholder)" className='input'/>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="field is-horizontal">
+              <div className="field-label is-normal">
+                <label className="label">What company do you work at?</label>
+              </div>
+              <div className="field-body">
+                <div className="field is-narrow">
+                  <p className="control is-normal">
+                    <Field name="companyName" component="input" type="text" className='input'/>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="field is-horizontal">
+              <div className="field-label is-normal">
+                <label className="label">What's your role in the company?</label>
+              </div>
+              <div className="field-body">
+                <div className="field is-narrow">
+                  <p className="control is-normal">
+                    <Field name="title" component="input" type="text" placeholder="Please provide your position/title" className='input'/>
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <br/>
+            <div className="field is-horizontal">
+              <div className="field-label is-normal">
+                <label className="label subtitle is-4">Tell us more about yourself</label>
+              </div>
+              <hr/>
+              <div className="field-body">
+                <div className="field">
+                    <Field name="about" className="textarea" rows="5" component="textarea" placeholder="We'd love to hear a brief introduction about yourself and why would like to take part!" />
+                </div>
+              </div>
+            </div>
+
+            <br/>
+            <div className="field is-horizontal">
+              <div className="field-label is-normal">
+                <label className="label subtitle is-4">How would you like to be involved with YFS?</label>
+              </div>
+              <hr/>
+              <p>CHECK BOXES - ALLOW MULTIPLE</p>
+              <div className="field-body">
+                <div className="field">
+                  <div className="control">
+                    <div className="select is-normal">
+                      <Field name="participation" component="select" className="form-control" >
+                        <option>Speaker</option>
+                        <option>Floating Mentor</option>
+                        <option>Fixed Mentor</option>
+                        <option>VC Panelist</option>
+                      </Field>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="box" onClick={()=> this.formActiveHandler("mentor")} style={{border:'1px solid hsl(348, 100%, 61%)',padding:'0.75rem'}}>
+                <span><i className="fa fa-exclamation-circle" style={{color:"hsl(348, 100%, 61%)"}} aria-hidden="true"></i><p className="title is-5" style={{display:"inline"}}> &nbsp;Helpful Notes:</p></span>
+                <ul>
+                  <hr style={{margin:'0.5rem 0'}}/>
+                  <li><b>Speaker:</b> Required on either Sat or Sun morning</li>
+                  <li><b>Fixed Mentor:</b> Required for the duration of the bootcamp</li>
+                  <li><b>Floating Mentor:</b> Required at the bootcamp for at least half a day on either Sat or Sun</li>
+                  <li><b>VC Panelist:</b> Required at 4:30pm on Sun</li>
+                </ul>
+            </div>
+
+          </div>
+          }
+
+          <hr />
+          <p className="subtitle is-4">Create a password</p>
+
           <div className="field is-horizontal">
             <div className="field-label is-normal">
-              <label className="label">What university do you plan to go to?</label>
+              <label className="label">Password *</label>
             </div>
             <div className="field-body">
               <div className="field is-narrow">
-                <p className="control is-normal">
-                  <Field name="desiredUniversity" component="input" type="text" placeholder="Your first choice" className='input'/>
+                <p className="control has-icons-left">
+                  <Field name="password" component="input" type="password" placeholder="Password" className='input'/>
+                  <span className="icon is-small is-left">
+                    <i className="fa fa-unlock"></i>
+                  </span>
                 </p>
               </div>
             </div>
           </div>
-             
+    
+          <div className="field is-horizontal">
+            <div className="field-label is-normal">
+              <label className="label">Password Confirmation*</label>
+            </div>
+            <div className="field-body">
+              <div className="field is-narrow">
+                <p className="control has-icons-left">
+                  <Field name="password1" component="input" type="password" placeholder="Password confirmation" className='input'/>
+                  <span className="icon is-small is-left">
+                    <i className="fa fa-unlock"></i>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+            
+          <br/>
+
           <div className="field is-horizontal">
             <div className="field-label">
             </div>
@@ -433,9 +557,9 @@ let SignupForm = props => {
 SignupForm = reduxForm({
   // a unique name for the form
   form: 'signup',
-  initialValues: {
-    tier: 'student'
-  }
+  // initialValues: {
+  //   tier: "Student"
+  // }
 })(SignupForm)
 
 export default SignupForm;

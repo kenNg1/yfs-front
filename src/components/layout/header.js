@@ -89,6 +89,9 @@ class Header extends Component {
         <div className="navbar-start">
         </div>
         <div className="navbar-end">
+              <Link to={'/about'} onClick={this.closeBurgerHandler} className="navbar-item">
+                About Us
+              </Link>
               <Link to={'/events'} onClick={this.closeBurgerHandler} className="navbar-item">
                 Programs
               </Link>

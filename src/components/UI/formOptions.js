@@ -1,5 +1,7 @@
 export const COUNTRIES = ['China', 'Hong Kong', 'Malaysia','Singapore', 'Thailand']
 
+export const CITIES = ['Shenzhen', 'Hong Kong', 'Kuala Lumpar','Singapore', 'Bangkok']
+
 export const HEARS = ['Word of Mouth', 'Facebook Ads', 'Family Members', 'School Staff', 'Others']
 
 export const FAMILIARITY = ['Not Familiar','Familiar','Very Familiar']

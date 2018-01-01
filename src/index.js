@@ -13,6 +13,7 @@ import { BrowserRouter, Route, Switch} from 'react-router-dom'
 import Header from './components/layout/header';
 import Footer from './components/layout/footer';
 import Landing from './components/landing';
+import About from './components/about';
 import Profile from './components/auth/profile';
 import EditProfile from './components/auth/edit_profile';
 import Signin from './components/auth/signin';
@@ -44,6 +45,7 @@ const app = (
             <Route path='/signup' component={Signup} />
             <Route path='/signin' component={Signin} />
             <Route path='/forgotpassword' component={ForgotPass} />
+            <Route path='/about' component={About} />
             <Route exact path='/profile/edit' component={EditProfile} />
             <Route path='/profile' component={Profile} />
             <Route path='/events/:id' component={EventShow} />

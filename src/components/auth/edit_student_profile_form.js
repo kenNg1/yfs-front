@@ -36,7 +36,6 @@ class EditStudentProfileForm extends Component {
       console.log(this.props)
       return (
         <div className="container"> 
-
         <form onSubmit={handleSubmit} >
           <p className="title is-3 is-spaced">My account</p>
           <p className="subtitle is-4">General Info</p>

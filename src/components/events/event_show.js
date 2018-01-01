@@ -227,7 +227,7 @@ class EventShow extends Component {
           </div>
           <br/>
           <div className='container'>
-            <Notice event={selectedEvent}/>
+            {selectedEvent.notice===null? null : <Notice event={selectedEvent}/>}
           </div>
           <br/>
           <div className='container'>

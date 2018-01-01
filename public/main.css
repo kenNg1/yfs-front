@@ -26,7 +26,10 @@ p {
   padding: 0.25em 0.5em;
 }
 
-
+div.box ul li {
+  list-style-type: circle;
+  list-style-position: inside;
+}
 
 @media(min-width:769px){
   .table td, .table th {
