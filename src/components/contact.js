@@ -53,11 +53,19 @@ class Contact extends Component {
                           }}
                         >
                           <td>
-                            <i class="fa fa-envelope" aria-hidden="true" />
+                            <i
+                              class="fa fa-envelope"
+                              aria-hidden="true"
+                              style={{ color: "white" }}
+                            />
                           </td>
                           <td>
                             <p
-                              style={{ fontSize: "15px", textAlign: "justify" }}
+                              style={{
+                                fontSize: "15px",
+                                textAlign: "justify",
+                                color: "white"
+                              }}
                             >
                               kenChicken@gmail.com
                             </p>
@@ -69,11 +77,19 @@ class Contact extends Component {
                           }}
                         >
                           <td>
-                            <i class="fa fa-map-marker" aria-hidden="true" />
+                            <i
+                              class="fa fa-map-marker"
+                              aria-hidden="true"
+                              style={{ color: "white" }}
+                            />
                           </td>
                           <td>
                             <p
-                              style={{ fontSize: "15px", textAlign: "justify" }}
+                              style={{
+                                fontSize: "15px",
+                                textAlign: "justify",
+                                color: "white"
+                              }}
                             >
                               4/F, Old Bank of China Building, Bank Street
                             </p>
