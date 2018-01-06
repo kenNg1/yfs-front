@@ -98,11 +98,11 @@ class Header extends Component {
               <Link to={'/gallery'} onClick={this.closeBurgerHandler} className="navbar-item">
                 Gallery
               </Link>
-              <Link to={'/contact'} onClick={this.closeBurgerHandler} className="navbar-item">
-                Contact Us
-              </Link>
               <Link to={'/mentor'} onClick={this.closeBurgerHandler} className="navbar-item">
                 Be a Mentor!
+              </Link>
+              <Link to={'/contact'} onClick={this.closeBurgerHandler} className="navbar-item">
+                Contact Us
               </Link>
               <hr/>
               {loginPanel}

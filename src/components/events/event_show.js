@@ -9,6 +9,7 @@ import * as actions from '../../actions'
 import RegisterEventForm from './register_event'
 import moment from 'moment';
 import placeholderImg from '../images/placeholder480x320.png'
+// https://gist.githubusercontent.com/Goles/3196253/raw/9ca4e7e62ea5ad935bb3580dc0a07d9df033b451/CountryCodes.json
 
 const mapStateToProps = state => {
   return {
@@ -46,6 +47,8 @@ class EventShow extends Component {
     if(userProfile){
       const ids = userProfile.events.map(event=>event.id)
       const eventId = parseInt(this.props.match.params.id)
+      console.log("evs",userProfile.events)
+      console.log("current status",userProfile.events[ids.indexOf(eventId)].event_student.status)
       if(!this.state.registered && ids.indexOf(eventId)!== -1){
         console.log("disable the button!")
         this.setState({registered:true})
@@ -75,10 +78,17 @@ class EventShow extends Component {
 
   openModalRegister = () => {
       const type = this.props.selectedEvent.type;
-      this.setState({
-        registerModal: true,
-        modalTitle:`Register for this ${type}`
-      })
+      if(this.state.registrationStatus==="Cancelled"){
+        this.setState({
+          registerModal: true,
+          modalTitle:`Reapply for this ${type}`
+        })
+      } else {
+        this.setState({
+          registerModal: true,
+          modalTitle:`Register for this ${type}`
+        })
+      }
   }
 
   openModalCancel = () => {
@@ -93,12 +103,19 @@ class EventShow extends Component {
   }
 
   submit = (values) => {
-    console.log('submitted values',values);
-    this.props.registerEvent(values, (data) => {
-      console.log(data)
-      this.setState({registered:true})
-      this.setState({registrationStatus:data.status})
-    });
+    if(this.state.registrationStatus==="Cancelled"){
+      values.status="Registered"
+      this.props.changeEventStatus(values, (data) => {
+        this.setState({registered:true})
+        this.setState({registrationStatus:data.status})
+      })
+    } else {
+      this.props.registerEvent(values, (data) => {
+        console.log(data)
+        this.setState({registered:true})
+        this.setState({registrationStatus:data.status})
+      });
+    }
     this.closeModal();
     document.getElementById('regInfo').scrollIntoView();
   }
@@ -167,9 +184,27 @@ class EventShow extends Component {
           </div>
         )
       } else {
+        console.log(this.props.selectedEvent)
+        // const previousApplication = 
+
+        const studentIds = this.props.selectedEvent.students.map(student => student.id)
+        const eventId = parseInt(this.props.userProfile.id)
+
+        const previousApplication = this.props.selectedEvent.students[studentIds.indexOf(eventId)].event_student
+
+        console.log(previousApplication)
+        //   console.log("evs",userProfile.events)
+        //   const previousApplication = userProfile.events[ids.indexOf(eventId)].event_student.status
+        //   if(!this.state.registered && ids.indexOf(eventId)!== -1){
+        //     this.setState({registered:true})
+        //     this.setState({registrationStatus:userProfile.events[ids.indexOf(eventId)].event_student.status})
+        //   }
+        // }
+
+
         if(this.props.selectedEvent.type === "Bootcamp"){
           this.modalForm = (
-            <RegisterEventForm eventId={this.props.selectedEvent.id} type="Bootcamp" onSubmit={(values)=>this.submit(values)}/>
+            <RegisterEventForm eventId={this.props.selectedEvent.id} previousApplication={previousApplication} type="Bootcamp" onSubmit={(values)=>this.submit(values)}/>
           )
         } else if(this.props.selectedEvent.type === "Day"){
           this.modalForm = (

@@ -2,6 +2,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form'
 import { ALLCOUNTRIES, CITIES, SCHOOLS, FAMILIARITY } from '../UI/formOptions'
 import '../../styles/animations.css'
+import FlagIcon from '../UI/FlagIcon.js'
 
 let SignupForm = props => {
   const { handleSubmit, pristine, reset, submitting } = props
@@ -79,14 +80,14 @@ let SignupForm = props => {
     
           <div className="field is-horizontal">
             <div className="field-label">
-              <label className="label">Mobile Number</label>
+              <label className="label">Mobile Number *</label>
             </div>
             <div className="field-body">
               <div className="field is-expanded">
                 <div className="field has-addons">
                   <p className="control">
                     <a className="button is-static">
-                      +852
+                      <span className="flag-icon flag-icon-hk"></span> +852
                     </a>
                   </p>
                   <p className="control is-normal">
@@ -99,7 +100,7 @@ let SignupForm = props => {
 
           <div className="field is-horizontal">
             <div className="field-label is-normal">
-              <label className="label">Country of residence</label>
+              <label className="label">Country of residence *</label>
             </div>
             <div className="field-body">
               <div className="field is-narrow">
@@ -141,18 +142,20 @@ let SignupForm = props => {
           <div>
             <div className="field is-horizontal">
               <div className="field-label is-normal">
-                <label className="label">School</label>
+                <label className="label">School *</label>
               </div>
               <div className="field-body">
                 <div className="field is-narrow">
                   <div className="control">
-                    <div className="select is-fullwidth">
+                    {/* <div className="select is-fullwidth">
                       <Field name="schoolName" component="select" className="form-control" >
                       <option value="">Please choose an option</option>
                         {SCHOOLS.map(school =>
                           <option value={school} key={school}>{school}</option>)}
                       </Field>
-                    </div>
+                    </div> */}
+                    <Field name="schoolName" component="input" type="text" placeholder="Your current school" className='input'/>
+                  <p style={{paddingLeft:'0.25rem'}} className="help">Full school name please, no abbreviations!</p>
                   </div>
                 </div>
               </div>
@@ -160,12 +163,13 @@ let SignupForm = props => {
             
       
             <br />
-            <p className="subtitle is-4">Skills</p>
+            <i className="fas fa-star favicon-title" style={{color:'hsl(48,100%,67%)'
+}}></i><p className="subtitle is-4 title-left-favicon">Skills</p>
             <hr />
       
             <div className="field is-horizontal">
               <div className="field-label is-normal">
-                <label className="label">How familiar are you with Google Slides?</label>
+                <label className="label">Google Slides? *</label>
               </div>
               <div className="field-body">
                 <div className="field is-narrow">
@@ -183,7 +187,7 @@ let SignupForm = props => {
             </div>
             <div className="field is-horizontal">
               <div className="field-label is-normal">
-                <label className="label">How familiar are you with Google Docs?</label>
+                <label className="label">Google Docs? *</label>
               </div>
               <div className="field-body">
                 <div className="field is-narrow">
@@ -201,7 +205,7 @@ let SignupForm = props => {
             </div>
             <div className="field is-horizontal">
               <div className="field-label is-normal">
-                <label className="label">How familiar are you with Microsoft Office?</label>
+                <label className="label">Microsoft Office? *</label>
               </div>
               <div className="field-body">
                 <div className="field is-narrow">
@@ -219,7 +223,8 @@ let SignupForm = props => {
             </div>
             
             <br />
-            <p className="subtitle is-4">Plans</p>
+            <i className="fas fa-graduation-cap favicon-title" style={{color:'hsl(83,73%,59%)'}}></i>
+            <p className="subtitle is-4 title-left-favicon">Plans</p>
             <hr />
       
             <div className="field is-horizontal">
@@ -349,7 +354,6 @@ let SignupForm = props => {
 
           <hr />
           <p className="subtitle is-4">Create a password</p>
-
           <div className="field is-horizontal">
             <div className="field-label is-normal">
               <label className="label">Password *</label>

@@ -140,7 +140,7 @@ class EventIndex extends Component {
     }
     
     if (this.props.eventIndex.length > 0) {
-
+      console.log(this.props.eventIndex)
       return (
         <div id="eventsIndex" className='container-fluid'>
           <br />
@@ -191,11 +191,11 @@ class EventIndex extends Component {
               {this.state.selectedCountry? 
               <div>
                 <p className="title is-4">Events in {this.state.selectedCountry}</p>
-                <i className="fa fa-exclamation-circle" style={{color:"hsl(348, 100%, 61%)"}} aria-hidden="true"></i>
+                <i className="fa fa-globe" style={{color:"hsl(171, 100%, 41%)"}} aria-hidden="true"></i>
               </div> : 
               <div>
                 <p className="title is-4">Events in all countries</p>
-                <i className="fa fa-exclamation-circle" style={{color:"hsl(348, 100%, 61%)"}} aria-hidden="true"></i>
+                <i className="fa fa-globe" style={{color:"hsl(171, 100%, 41%)",fontSize:"20px"}} aria-hidden="true"></i>
               </div>}
               {renderedEvents}
           </div>

@@ -11,6 +11,7 @@
     "react": "^16.2.0",
     "react-datepicker": "^0.62.0",
     "react-dom": "^16.2.0",
+    "react-flag-icon-css": "^1.0.23",
     "react-google-maps": "^9.4.3",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",

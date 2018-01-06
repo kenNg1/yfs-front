@@ -89,7 +89,7 @@ class Profile extends Component {
           } else if(event.event_student.status === "Pending" || event.event_student.status === "Confirmed" ) {
             statusButton = <button onClick={()=>this.goToActionHandler(event.id)} className="button is-danger is-small">Cancel</button>           
           } else if(event.event_student.status === "Cancelled"){
-            statusButton = <button onClick={()=>this.goToActionHandler(event.id)} className="button is-primary is-small">Undo</button>                       
+            statusButton = <button onClick={()=>this.goToActionHandler(event.id)} className="button is-primary is-small">Re-register</button>                       
           }
 
           return (

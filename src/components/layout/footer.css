@@ -94,11 +94,11 @@
 }
 
 #myFooter .facebook:hover {
-    color: #0077e2;
+    color: #0f7edf;
 }
 
-#myFooter .google:hover {
-    color: #ef1a1a;
+#myFooter .instagram:hover {
+    color: rgb(163, 81, 204);
 }
 
 #myFooter .twitter:hover {

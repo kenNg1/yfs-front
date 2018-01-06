@@ -45,7 +45,7 @@ class Signup extends Component {
       <div className='container-fluid' style={landingBackground}>
         <div style={centerText}>
           {this.state.formType==='mentor'? null :
-          <div className="box" onClick={()=> this.formActiveHandler("student")} style={{border:'1px solid hsl(171, 100%, 41%)'}}>
+          <div className="box" onClick={()=> this.formActiveHandler("student")} style={{border:'1px solid hsl(171, 100%, 41%)',cursor:'pointer'}}>
             <p className="title is-5 is-spaced">SIGN UP AS A STUDENT</p>
             <span><i className="fas fa-child" aria-hidden="true" style={{color:"hsl(171, 100%, 41%)"}}></i><p className="title is-6" style={{display:"inline"}}> &nbsp;Requirements:</p></span>
             <ul>
@@ -55,7 +55,7 @@ class Signup extends Component {
           }
           {this.state.formType!==''? null :<hr />}
           {this.state.formType==='student'? null :
-          <div className="box" onClick={()=> this.formActiveHandler("mentor")} style={{border:'1px solid hsl(217, 71%, 53%)'}}>
+          <div className="box" onClick={()=> this.formActiveHandler("mentor")} style={{border:'1px solid hsl(217, 71%, 53%)',cursor:'pointer'}}>
             <p className="title is-5 is-spaced">SIGN UP AS A MENTOR</p>
             <span><i className="fas fa-child" aria-hidden="true" style={{color:"hsl(217, 71%, 53%)"}}></i><p className="title is-6" style={{display:"inline"}}> &nbsp;Requirements:</p></span>
             <ul>

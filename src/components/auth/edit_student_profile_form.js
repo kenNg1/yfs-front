@@ -10,13 +10,12 @@ class EditStudentProfileForm extends Component {
     const initData = {
       ...user,
       email
-    };   
+    }; 
     this.props.initialize(initData);
   }
 
   componentDidMount(){  
     const user = this.props.userProfile;
-    console.log(user)
     this.handleInitialize(user);
   }
 
@@ -148,7 +147,7 @@ class EditStudentProfileForm extends Component {
 
       <div className="field is-horizontal">
         <div className="field-label is-normal">
-          <label className="label">How familiar are you with Google Slides?</label>
+          <label className="label">Google Slides?</label>
         </div>
         <div className="field-body">
           <div className="field is-narrow">
@@ -166,7 +165,7 @@ class EditStudentProfileForm extends Component {
       </div>
       <div className="field is-horizontal">
         <div className="field-label is-normal">
-          <label className="label">How familiar are you with Google Docs?</label>
+          <label className="label">Google Docs?</label>
         </div>
         <div className="field-body">
           <div className="field is-narrow">
@@ -184,7 +183,7 @@ class EditStudentProfileForm extends Component {
       </div>
       <div className="field is-horizontal">
         <div className="field-label is-normal">
-          <label className="label">How familiar are you with Microsoft Office?</label>
+          <label className="label">Microsoft Office?</label>
         </div>
         <div className="field-body">
           <div className="field is-narrow">

@@ -4,8 +4,10 @@ import { Field, reduxForm } from 'redux-form'
 class RegisterEventForm extends Component {
 
   componentDidMount(){
-    const id = localStorage.getItem('id')    
+    const id = localStorage.getItem('id')
+    const previousApp = this.props.previousApplication
     const initData = {
+      ...previousApp,
       eventId:this.props.eventId,
       userId:id
     };   

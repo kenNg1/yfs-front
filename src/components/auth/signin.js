@@ -18,7 +18,7 @@ class Signin extends Component {
 
   submit = (values) => {
     this.props.signInUser(values, () => {
-      this.props.history.push('/profile');      
+      this.props.history.push('/');      
     })    
   }
 
