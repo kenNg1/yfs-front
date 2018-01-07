@@ -59,11 +59,17 @@ class SignupForm extends Component{
       dialCode = <span className="input">{dc}</span>
       phonePlaceholder = "Enter phone no";
       mobileNumberDisabled = false;
+    }
 
+    let formAnimation = null;
+    if(this.props.edit){
+      formAnimation = "container pullDown"
+    } else {
+      formAnimation = "container pullUp"
     }
   
     return (
-            <div className="container pullUp"> 
+            <div className={formAnimation}> 
               <form onSubmit={handleSubmit} >
                 <div className="field is-horizontal">
                 <div className="field-label is-normal">

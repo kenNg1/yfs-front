@@ -190,16 +190,20 @@ class EventShow extends Component {
         const studentIds = this.props.selectedEvent.students.map(student => student.id)
         const eventId = parseInt(this.props.userProfile.id)
 
-        const previousApplication = this.props.selectedEvent.students[studentIds.indexOf(eventId)].event_student
+        let previousApplication = null;
 
-        console.log(previousApplication)
-        //   console.log("evs",userProfile.events)
-        //   const previousApplication = userProfile.events[ids.indexOf(eventId)].event_student.status
-        //   if(!this.state.registered && ids.indexOf(eventId)!== -1){
-        //     this.setState({registered:true})
-        //     this.setState({registrationStatus:userProfile.events[ids.indexOf(eventId)].event_student.status})
-        //   }
-        // }
+        if(this.props.selectedEvent&&this.props.selectedEvent.students[studentIds.indexOf(eventId)]){
+          previousApplication = this.props.selectedEvent.students[studentIds.indexOf(eventId)].event_student
+  
+          console.log(previousApplication)
+          //   console.log("evs",userProfile.events)
+          //   const previousApplication = userProfile.events[ids.indexOf(eventId)].event_student.status
+          //   if(!this.state.registered && ids.indexOf(eventId)!== -1){
+          //     this.setState({registered:true})
+          //     this.setState({registrationStatus:userProfile.events[ids.indexOf(eventId)].event_student.status})
+          //   }
+          // }
+        }
 
 
         if(this.props.selectedEvent.type === "Bootcamp"){
