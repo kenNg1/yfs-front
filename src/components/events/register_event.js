@@ -59,8 +59,8 @@ class RegisterEventForm extends Component {
               <div className="radio">
                 <label><Field name="openToOtherIdeas" component="input" type="radio" value="false"/> No</label>
               </div>
+            </div>
           </div>
-        </div>
       </section>
       )
     } else if(this.props.type === "Day"){

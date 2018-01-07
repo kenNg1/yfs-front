@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import SignupForm from './signup_form'
 import * as actions from '../../actions';
+import { ALLCOUNTRIES } from '../UI/formOptions'
+
 
 const mapDispatchToProps = {
   signUpUser: actions.signUpUser,
@@ -15,7 +17,14 @@ class Signup extends Component {
 
   submit = (values) => {
     values.tier = this.state.formType;
+    
+    const dialCode = ALLCOUNTRIES.filter((country)=>{
+      return country.code===values.code
+    }).map((country)=>{return country.dial_code})[0]
+    values.mobileNumber = `${dialCode}-${values.mobileNumber}`
+
     console.log(values);
+
     this.props.signUpUser(values, () => {
       this.props.history.push('/')
     })

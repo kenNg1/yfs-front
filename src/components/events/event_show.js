@@ -47,8 +47,8 @@ class EventShow extends Component {
     if(userProfile){
       const ids = userProfile.events.map(event=>event.id)
       const eventId = parseInt(this.props.match.params.id)
-      console.log("evs",userProfile.events)
-      console.log("current status",userProfile.events[ids.indexOf(eventId)].event_student.status)
+      // console.log("evs",userProfile.events)
+      // console.log("current status",userProfile.events[ids.indexOf(eventId)].event_student.status)
       if(!this.state.registered && ids.indexOf(eventId)!== -1){
         console.log("disable the button!")
         this.setState({registered:true})
@@ -278,7 +278,7 @@ class TopEventInfo extends Component {
 
   renderFull(max,joined){
     const full = (joined&&max-joined===0)
-    return full? "Full": null
+    return full? "Full": String(max-joined)
   }
 
   render(){
@@ -317,7 +317,7 @@ class RegistrationInfo extends Component {
 
   renderFull(max,joined){
     const full = (joined&&max-joined===0)
-    return full? "Full": joined
+    return full? "Full": String(max-joined)
   }
 
   render(){
@@ -395,7 +395,7 @@ class RegistrationInfo extends Component {
               <p>{event.name}</p>
             </div>
             <div className="column is-half-mobile">
-              <strong>Remaining</strong>
+              <strong>Remaining Spots</strong>
               <p>{this.renderFull(event.studentsMax, event.studentsIn)}</p>
             </div>
           </div>

@@ -235,56 +235,6 @@ class EditStudentProfileForm extends Component {
         </div>
       </div>
 
-      {/* <div className="field is-horizontal">
-        <div className="field-label is-normal">
-          <label className="label">Department</label>
-        </div>
-        <div className="field-body">
-          <div className="field is-narrow">
-            <div className="control">
-              <div className="select is-fullwidth">
-                <select>
-                  <option>Business development</option>
-                  <option>Marketing</option>
-                  <option>Sales</option>
-                </select>
-              </div>
-            </div>
-            <p className="help">Do not enter the first zero (example helpful note)</p>
-          </div>
-        </div>
-      </div>
-
-
-      <div className="field is-horizontal">
-        <div className="field-label is-normal">
-          <label className="label">Subject</label>
-        </div>
-        <div className="field-body">
-          <div className="field">
-            <div className="control">
-              <input className="input is-danger" type="text" placeholder="e.g. Partnership opportunity" />
-            </div>
-            <p className="help is-danger">
-              This field is required
-            </p>
-          </div>
-        </div>
-      </div>
-      
-      <div className="field is-horizontal">
-        <div className="field-label is-normal">
-          <label className="label">Question</label>
-        </div>
-        <div className="field-body">
-          <div className="field">
-            <div className="control">
-              <textarea className="textarea" placeholder="Explain how we can help you"></textarea>
-            </div>
-          </div>
-        </div>
-      </div> */}
-      
       <div className="field is-horizontal">
         <div className="field-label">
         </div>

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import EditStudentProfileForm from './edit_student_profile_form';
 import * as actions from '../../actions';
 import moment from 'moment'
+import SignupForm from './signup_form'
 
 const mapStateToProps = state => ({
   userProfile: state.profileInfo.userProfile
@@ -56,7 +57,8 @@ class EditProfile extends Component {
     return (
       <div className='container-fluid' style={landingBackground}>
         <div style={centerText}>
-          <EditStudentProfileForm userProfile={this.props.userProfile} countries={countries} onSubmit={this.submit}/>
+          {/* <EditStudentProfileForm userProfile={this.props.userProfile} countries={countries} onSubmit={this.submit}/> */}
+          <SignupForm edit={true} userProfile={this.props.userProfile} formType={"student"} countries={countries} onSubmit={this.submit}/>
         </div>
       </div>
     )
