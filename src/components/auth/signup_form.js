@@ -41,7 +41,7 @@ class SignupForm extends Component{
       marginRight: '10px',
     }
   
-    const DIAL_CODES = ALLCOUNTRIES.sort((a,b) => {
+    const DIAL_CODES = [...ALLCOUNTRIES].sort((a,b) => {
       return (a.dial_code > b.dial_code) ? 1 : ((b.dial_code > a.dial_code) ? -1 : 0)
     }) 
 
@@ -104,7 +104,7 @@ class SignupForm extends Component{
             </div>
   
             {this.props.formType==="mentor"? null :
-            <div>
+            <div style={{marginBottom:'5px'}}>
               <div className="field is-horizontal">
                 <div className="field-label is-normal">
                   <label className="label">Date of Birth *</label>
@@ -119,7 +119,7 @@ class SignupForm extends Component{
                 <div className="field-label">
                   <label className="label">Gender</label>
                 </div>
-                <div className='form-group'>
+                <div className='field-body'>
                   <div className="radio">
                     <label><Field name="gender" component="input" type="radio" value="Male"/> Male</label>
                   </div>
@@ -198,8 +198,7 @@ class SignupForm extends Component{
                 <div className="field is-narrow">
                   <div className="control">
                     <div className="select is-fullwidth">
-                      <Field name="countryName" component="select" className="form-control" >
-                      <option value="">Select a country... </option>
+                      <Field name="country.name" component="select" className="form-control" >
                         {ALLCOUNTRIES.map(country =>
                           <option value={country.name} key={country.name}>{country.name}</option>)}
                       </Field>
@@ -239,13 +238,6 @@ class SignupForm extends Component{
                 <div className="field-body">
                   <div className="field is-narrow">
                     <div className="control">
-                      {/* <div className="select is-fullwidth">
-                        <Field name="schoolName" component="select" className="form-control" >
-                        <option value="">Please choose an option</option>
-                          {SCHOOLS.map(school =>
-                            <option value={school} key={school}>{school}</option>)}
-                        </Field>
-                      </div> */}
                       <Field name="schoolName" component="input" type="text" placeholder="Your current school" className='input'/>
                     <p style={{paddingLeft:'0.25rem'}} className="help">Full school name please, no abbreviations!</p>
                     </div>

@@ -91,46 +91,54 @@ class EventIndex extends Component {
 
     if(this.state.selectedCountry !== null){
       eventList = eventList.filter(ev => {
-        return ev.country.name === this.state.selectedCountry;
+        return ev.country.name === this.state.selectedCountry.name;
       })
     } else {
       eventList = this.props.eventIndex;
     }
 
-    renderedEvents = eventList.map(event => {
+    if(eventList.length===0){
+      renderedEvents = 
+      <div id="eventShow" className="box"> 
+        <p className="title is-6">There are events coming soon so stay tuned!</p>
 
-      const date = moment(event.date).format("DD-MM-YYYY")
+      </div>
+      
+    } else if(eventList.length>0){
+      renderedEvents = eventList.map(event => {
 
-      return (
-        <Link key={`id-${event.id}`} to={`/events/${event.id}`}>
-
-          <div id="eventShow" className="box"> 
-            <div className="columns is-centered">
-              <div className="column is-6 cardLeft">
-                  <h3 className='date'>{date}</h3>
-                  <p className="title is-5">{event.name}</p>
-                  <p>{event.shortInfo}</p>
-              </div>
-              <p className='location' style={{marginTop:'20px'}}><strong>Location:</strong> {event.location}</p>
-
-              <div className="column is-4 is-two-thirds-mobile cardRight">
-                <div className="card">
-                  <img src={placeholderImg} alt=''/>
-                  <div className='cardLeftTopDetails'>
-                    <p>{this.renderFull(event.studentsMax,event.studentsIn)}</p>
-                  </div>
-                  <div className='cardLeftBottomDetails'>
-                    <h5>HK${parseInt(event.price, 10).toLocaleString()}</h5>
+        const date = moment(event.date).format("DD-MM-YYYY")
+  
+        return (
+          <Link key={`id-${event.id}`} to={`/events/${event.id}`}>
+  
+            <div id="eventShow" className="box"> 
+              <div className="columns is-centered">
+                <div className="column is-6 cardLeft">
+                    <h3 className='date'>{date}</h3>
+                    <p className="title is-5">{event.name}</p>
+                    <p>{event.shortInfo}</p>
+                </div>
+                <p className='location' style={{marginTop:'20px'}}><strong>Location:</strong> {event.location}</p>
+  
+                <div className="column is-4 is-two-thirds-mobile cardRight">
+                  <div className="card">
+                    <img src={placeholderImg} alt=''/>
+                    <div className='cardLeftTopDetails'>
+                      <p>{this.renderFull(event.studentsMax,event.studentsIn)}</p>
+                    </div>
+                    <div className='cardLeftBottomDetails'>
+                      <h5>HK${parseInt(event.price, 10).toLocaleString()}</h5>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
+        )
+      })
+    }
 
-
-        </Link>
-      )
-    })
 
 
     if (this.props.eventIndex.length === 0) {
@@ -141,6 +149,7 @@ class EventIndex extends Component {
     
     if (this.props.eventIndex.length > 0) {
       console.log(this.props.eventIndex)
+      console.log(this.state)
       return (
         <div id="eventsIndex" className='container-fluid'>
           <br />
@@ -176,7 +185,7 @@ class EventIndex extends Component {
                   </a>
                   {COUNTRIES.map((country,index) => {
                     return <a className="dropdown-item" onClick={()=>this.countryClickHandler(country)} key={index}>
-                     {country}
+                     {country.name}
                     </a>
                   })}
                 </div>
@@ -190,12 +199,15 @@ class EventIndex extends Component {
           </div>
               {this.state.selectedCountry? 
               <div>
-                <p className="title is-4">Events in {this.state.selectedCountry}</p>
-                <i className="fa fa-globe" style={{color:"hsl(171, 100%, 41%)"}} aria-hidden="true"></i>
+                <p className="title is-4">Events in {this.state.selectedCountry.name}</p>
+                <span 
+                  className={`flag-icon flag-icon-${this.state.selectedCountry.code} flag-icon`}
+                  style={{fontSize:'23px',backgroundColor:'rgba(0,0,0,0.12)',border:'0.1px solid rgba(0,0,0,0.12)'}}></span>
               </div> : 
               <div>
                 <p className="title is-4">Events in all countries</p>
-                <i className="fa fa-globe" style={{color:"hsl(171, 100%, 41%)",fontSize:"20px"}} aria-hidden="true"></i>
+                <i className="fa fa-globe" style={{color:" rgb(26, 165, 144)",fontSize:"23px"}}                 
+                aria-hidden="true"></i>
               </div>}
               {renderedEvents}
           </div>
