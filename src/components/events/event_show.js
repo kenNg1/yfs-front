@@ -22,6 +22,7 @@ const mapDispatchToProps = dispatch => {
   return {
     getEvent: (id) => dispatch(actions.getEvent(id)),
     studentProfile: (id) => dispatch(actions.studentProfile(id)),
+    mentorProfile: (id) => dispatch(actions.mentorProfile(id)),
     registerEvent: (values,callback) => dispatch(actions.registerEvent(values,callback)),
     changeEventStatus: (values,callback) => dispatch(actions.changeEventStatus(values,callback))
   }
@@ -73,6 +74,8 @@ class EventShow extends Component {
 
     if(this.tier === 'student'){
       this.props.studentProfile(this.id)
+    } else {
+      this.props.mentorProfile(this.id)
     }
   }
 
@@ -205,20 +208,32 @@ class EventShow extends Component {
           // }
         }
 
-
-        if(this.props.selectedEvent.type === "Bootcamp"){
+        if(localStorage.getItem('tier')==="mentor"){
           this.modalForm = (
-            <RegisterEventForm eventId={this.props.selectedEvent.id} previousApplication={previousApplication} type="Bootcamp" onSubmit={(values)=>this.submit(values)}/>
+            <section className="modal-card-body">
+              <div className="field">
+                <div className="field-label">
+                  <p>Currently only students can register, we will be inviting mentors via email</p>
+                </div>
+              </div>
+            </section>
           )
-        } else if(this.props.selectedEvent.type === "Day"){
-          this.modalForm = (
-            <RegisterEventForm eventId={this.props.selectedEvent.id} type="Day" onSubmit={(values)=>this.submit(values)}/>
-          )
-        } else if(this.props.selectedEvent.type === "Talk"){
-          this.modalForm = (
-            <RegisterEventForm eventId={this.props.selectedEvent.id} type="Talk" onSubmit={(values)=>this.submit(values)}/>
-          )   
+        } else {
+          if(this.props.selectedEvent.type === "Bootcamp"){
+            this.modalForm = (
+              <RegisterEventForm eventId={this.props.selectedEvent.id} previousApplication={previousApplication} type="Bootcamp" onSubmit={(values)=>this.submit(values)}/>
+            )
+          } else if(this.props.selectedEvent.type === "Day"){
+            this.modalForm = (
+              <RegisterEventForm eventId={this.props.selectedEvent.id} type="Day" onSubmit={(values)=>this.submit(values)}/>
+            )
+          } else if(this.props.selectedEvent.type === "Talk"){
+            this.modalForm = (
+              <RegisterEventForm eventId={this.props.selectedEvent.id} type="Talk" onSubmit={(values)=>this.submit(values)}/>
+            )   
+          }
         }
+
       }
 
 
@@ -287,33 +302,42 @@ class TopEventInfo extends Component {
 
   render(){
     const {event} = this.props;
-
     const date = moment(event.date).format("DD-MM-YYYY")
     
-    return (
+    if(event.country){
+      return (
 
-      <div id="eventShow" className="box"> 
-        <div className="columns is-centered">
-            <div className="column is-6 cardLeft">
-                <h3 className='date'>{date}</h3>
-                <p className="title is-4">{event.name} - <em>{event.location}</em></p>
-                <p>{event.shortInfo}</p>
-            </div>
-
-          <div className="column is-4 is-two-thirds-mobile cardRight">
-            <div className="card">
-              <img src={placeholderImg} alt=''/>
-              <div className='cardLeftTopDetails'>
-                <p>{this.renderFull(event.studentsMax,event.studentsIn)}</p>
+        <div id="eventShow" className="box"> 
+          <div className="columns is-centered">
+              <div className="column is-6 cardLeft">
+                  <h3 className='date'>{date}</h3>
+                  <p className="title is-4">{event.name}</p>
+                  <p>{event.shortInfo}</p>
               </div>
-              <div className='cardLeftBottomDetails'>
-                <h5>HK${parseInt(event.price, 10).toLocaleString()}</h5>
+            <div className="column is-4 is-two-thirds-mobile cardRight">
+              <div className="card">
+                <img src={placeholderImg} alt=''/>
+                <div className='cardLeftTopDetails'>
+                  <p>{this.renderFull(event.studentsMax,event.studentsIn)}</p>
+                </div>
+                <div className='cardLeftBottomDetails'>
+                  <h5>HK${parseInt(event.price, 10).toLocaleString()}</h5>
+                </div>
               </div>
             </div>
           </div>
+          <p style={{marginTop:'20px'}}><strong>Location:</strong> {event.location}, {event.country.name}</p>
+
         </div>
-      </div>
-    )
+      )
+    } else {
+      return (
+        <div id="eventShow" className="box"> 
+          <p>Loading...</p>
+        </div>
+      )
+    }
+
   }
 }
 

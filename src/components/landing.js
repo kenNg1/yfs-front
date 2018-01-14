@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
+import * as actions from "../actions";
 import './landing.css'
 
 // import hero from './hero2.png';
@@ -12,6 +13,7 @@ import podiumImg from './images/podium.png'
 import mentorImg from './images/mentorship.png'
 import mapImg from './images/map.png'
 import gallery1 from './images/gallery1.jpg'
+const Fragment = React.Fragment;
 
 const mapStateToProps = state => {
   return {
@@ -19,17 +21,29 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = {
+  storeCountry: actions.storeCountry
+};
+
+
 class Landing extends Component {
   componentDidMount(){
     window.scrollTo(0, 0);
+    this.props.storeCountry()
+
   }
   
   renderAlert(){
     if(this.props.message){
       return(
-        <div className="notification is-primary fade-in-animation" style={{position:'absolute',width:"400px",margin:"0 auto",left:0,right:0}}>
-          {this.props.message}          
-        </div>
+        <Fragment>
+
+          <div className="notification is-primary fade-in-animation" style={{position:'absolute',width:"400px",margin:"0 auto",left:0,right:0,textAlign:'center'}}>
+            {this.props.message}
+            <br/>
+            <Link to={'/profile'} style={{zIndex:'999'}} className='button is-success is-inverted'>Go to Profile</Link>  
+          </div>
+        </Fragment>
       )
     }
   }
@@ -132,4 +146,4 @@ class Landing extends Component {
   }
 }
 
-export default connect(mapStateToProps)(Landing);
+export default connect(mapStateToProps,mapDispatchToProps)(Landing);

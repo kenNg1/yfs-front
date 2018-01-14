@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/react": "^16.0.34",
+    "@types/react-dom": "^16.0.3",
     "axios": "^0.17.1",
     "babel-preset-stage-1": "^6.1.18",
-    "flat": "^4.0.0",
-    "lodash": "^3.10.1",
     "material-ui": "^0.19.3",
     "react": "^16.2.0",
     "react-datepicker": "^0.62.0",
@@ -23,8 +23,11 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
+    "awesome-typescript-loader": "^3.4.1",
+    "jquery": "^2.2.1",
     "react-scripts": "1.0.17",
-    "jquery": "^2.2.1"
+    "source-map-loader": "^0.2.3",
+    "typescript": "^2.6.2"
   },
   "scripts": {
     "start": "react-scripts start",

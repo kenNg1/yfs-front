@@ -2,6 +2,7 @@ import axios from 'axios'
 import moment from 'moment'
 
 export const AUTH_ERROR = 'AUTH_ERROR'
+export const GET_COUNTRY = 'GET_COUNTRY'
 export const SIGN_UP = 'SIGN_UP'
 export const SIGN_IN = 'SIGN_IN'
 export const LOG_OUT = 'LOG_OUT'
@@ -37,6 +38,19 @@ export const changeEventStatus = (values,callback) => {
   }
 }
 
+export const storeCountry = (values) => {
+  return dispatch => {
+    axios.get(`https://freegeoip.net/json/`)
+    .then(response => {
+      const selectedCountry = {
+        name:response.data.country_name,
+        code:response.data.country_code.toLowerCase()
+      }
+      localStorage.setItem('selectedCountry', JSON.stringify(selectedCountry)) 
+    })
+  }
+}
+
 export const signUpUser = (values, callback) => {
   return dispatch => {
     axios.post(`${ROOT_URL}/register`, values)
@@ -63,9 +77,9 @@ export const signInUser = (values, callback) => {
       localStorage.setItem('firstName', response.data.firstName)   
       callback()
       dispatch({type: SIGN_IN, payload: response.data, message:"Successfully signed in"});
-      setTimeout(() => {
-        dispatch({ type:SIGN_IN, payload: response.data, message:null })
-      }, 3000)
+      // setTimeout(() => {
+      //   dispatch({ type:SIGN_IN, payload: response.data, message:null })
+      // }, 3000)
     })
     .catch(error =>{
       dispatch(authError(error.response.data.message))
@@ -119,6 +133,16 @@ export const mentorProfile = (id, callback) => {
       dispatch({type: MENTOR_PROFILE, payload: response.data});
     })
     .catch(error => {})
+  }
+}
+
+export const editMentorProfile = (values,id,callback) => {
+  return dispatch => {
+    axios.put(`${ROOT_URL}/api/mentors/${id}`,values)
+    .then(response => {
+      callback();
+      dispatch({type:EDIT_MENTOR_PROFILE, payload: response.data})
+    })
   }
 }
 

@@ -16,7 +16,6 @@ export default function(state = initialState, action={}){
         userProfile: action.payload
       }
       
-      
       case MENTOR_PROFILE:
       return {
         ...state,

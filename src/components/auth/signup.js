@@ -15,18 +15,31 @@ class Signup extends Component {
     formType:''
   }
 
-  submit = (values) => {
+  submit = (values,error) => {
+    console.log(error)
+    
     values.tier = this.state.formType;
+
+    if(values.country){
+      values.countryName = values.country.name;
+    }
+
+    if(values.city){
+      values.cityName = values.city.name;
+    }
     
     const dialCode = ALLCOUNTRIES.filter((country)=>{
       return country.code===values.code
     }).map((country)=>{return country.dial_code})[0]
-    values.mobileNumber = `${dialCode}-${values.mobileNumber}`
+
+    if(dialCode){
+      values.mobileNumber = `${dialCode}-${values.mobileNumber}`
+    }
 
     console.log(values);
 
     this.props.signUpUser(values, () => {
-      this.props.history.push('/')
+      this.props.history.push('/profile')
     })
   }
 

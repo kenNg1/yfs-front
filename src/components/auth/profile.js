@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import './profile.css'
 import * as actions from '../../actions';
 import moment from 'moment'
+const Fragment = React.Fragment;
 
 const mapStateToProps = state => {
   return {
@@ -24,7 +25,8 @@ class Profile extends Component {
   constructor(props){
     super(props);
     this.state = {
-      regEvents:null
+      regEvents:null,
+      hiddenInfo:true
     }
   }
 
@@ -36,7 +38,6 @@ class Profile extends Component {
       // this.props.getStudentEvents(this.id)
     } else if(this.tier === 'mentor'){
       this.props.mentorProfile(this.id);  
-            
     }
     
   }
@@ -45,9 +46,19 @@ class Profile extends Component {
     this.props.history.push(`/events/${eventId}`);
     console.log("INSTEAD OF CHANGING ROUTES, LETS BRING UP THE REG INFO AS A MODAL")
   }
+
+  showInfoHandler = () => {
+    if(this.state.hiddenInfo==true){
+      this.setState({hiddenInfo:false})
+    } else {
+      this.setState({hiddenInfo:true})
+    }
+  }
   
   render(){
     
+    console.log("show these props",this.props)
+
     const landingBackground = {
       width: "100vw",
      }
@@ -124,6 +135,8 @@ class Profile extends Component {
               <h1 className="title">My Profile</h1>
               <div className="tile is-ancestor">
                 <div className="tile is-6 is-vertical is-parent">
+
+                { this.tier === "student" ?
                   <div className="tile is-child notification is-danger">
                     <p className="title is-4" style={{paddingLeft:'1.25rem',paddingTop:'1.25rem'}}>My Programs</p>
                     <table className="table">
@@ -138,43 +151,77 @@ class Profile extends Component {
                       </tbody>
                     </table>
                     {eventsPageButton}
-                  </div>
+                  </div> : null
+                }
                 </div>
+
                 <div className="tile is-6 is-vertical is-parent">
-                  <div className="tile is-child notification is-warning">
-                    <p className="title is-4">My Plans</p>
-                    <p className="title is-6">University of choice:
-                      <span style={{fontWeight:'normal'}}> {userProfile.desiredUniversity }</span></p>
-                    <p className="title is-6">Plans after university graduation:
-                      <span style={{fontWeight:'normal'}}> {userProfile.graduationPlans}</span></p>
-                  </div>
-                  <div className="tile is-child notification is-primary">
-                    <p className="title is-4">My info</p>
-                    <p className="title is-6">First Name:
-                      <span style={{fontWeight:'normal'}}> {userProfile['firstName']}</span></p>
-                    <p className="title is-6">Last Name:
-                      <span style={{fontWeight:'normal'}}> {userProfile['lastName']}</span></p>
-                    <p className="title is-6" style={{display:'inline'}}>Password: &nbsp;</p>
-                      <a className="button is-primary is-small is-inverted"> Update Password</a>
-                    <p className="title is-6" style={{marginTop:'10px'}}>School Name:
-                      <span style={{fontWeight:'normal'}}> {userProfile.schoolName}</span></p>
-                    <p className="title is-6">Mobile Number:
+
+                { this.tier === "student" ?
+                <div className="tile is-child notification is-warning">
+                  <p className="title is-4">My Plans</p>
+                  <p className="title is-6">University of choice:
+                    <span style={{fontWeight:'normal'}}> {userProfile.desiredUniversity }</span></p>
+                  <p className="title is-6">Plans after university graduation:
+                    <span style={{fontWeight:'normal'}}> {userProfile.graduationPlans}</span></p>
+                </div>
+                :
+                <div className="tile is-child notification is-warning">
+                  <p className="title is-4">Experience</p>
+                  <p className="title is-6">Current Industry:
+                    <span style={{fontWeight:'normal'}}> {userProfile.industry }</span></p>
+                  <p className="title is-6">Current Company:
+                    <span style={{fontWeight:'normal'}}> {userProfile.companyName }</span></p>
+                  <p className="title is-6">Current Role:
+                    <span style={{fontWeight:'normal'}}> {userProfile.title}</span></p>
+                  <p className="title is-6">Preferred Roles with YFS:</p>
+                    <ul style={{paddingLeft:'1.25rem',listStyleType:'disc'}}>
+                  
+                    {userProfile.participation && userProfile.participation.map(role=>
+                      <li key={role} style={{fontWeight:'normal'}}>{role}</li>
+                    )}
+                    </ul>
+                </div>
+                }
+
+
+                <div className="tile is-child notification is-primary">
+                  <p className="title is-4">My info</p>
+                  <p className="title is-6">First Name:
+                    <span style={{fontWeight:'normal'}}> {userProfile['firstName']}</span></p>
+                  <p className="title is-6">Last Name:
+                    <span style={{fontWeight:'normal'}}> {userProfile['lastName']}</span></p>
+                  <p className="title is-6" style={{display:'inline'}}>Password: &nbsp;</p>
+                  <a className="button is-primary is-small is-inverted"> Update Password</a>
+                  { this.tier === "student" ?
+                  <p className="title is-6" style={{marginTop:'10px'}}>School Name:
+                    <span style={{fontWeight:'normal'}}> {userProfile.schoolName}</span></p>
+                  : null }
+                  { this.state.hiddenInfo===true ? null :
+                  <Fragment>
+                    <p className="title is-6" style={{marginTop:'15px'}}>Mobile Number:
                       <span style={{fontWeight:'normal'}}> {userProfile.mobileNumber}</span></p>
-                    <p className="title is-6">Date of Birth:
-                      <span style={{fontWeight:'normal'}}> {dob}</span></p>
-                    <p className="title is-6">Gender:
-                      <span style={{fontWeight:'normal'}}> {userProfile.gender}</span></p>
+                  { this.tier === "student" ?
+                    <Fragment>
+                      <p className="title is-6">Date of Birth:
+                        <span style={{fontWeight:'normal'}}> {dob}</span></p>
+                      <p className="title is-6">Gender:
+                        <span style={{fontWeight:'normal'}}> {userProfile.gender}</span></p>
+                    </Fragment>
+                  : null }
                     <p className="title is-6">Country of residence:
                       <span style={{fontWeight:'normal'}}> {userProfile.country.name}</span></p>
-                    <div className="buttons is-centered">
-                      <a className="button is-primary is-inverted">Show More</a>&nbsp;
-                      <Link to='/profile/edit' className="button is-primary is-inverted">Update Profile</Link>
-                    </div>
+                  </Fragment>
+                  }
+                  <div className="buttons is-centered" style={{marginTop:'10px'}}>
+                    <a className="button is-primary is-inverted" onClick={this.showInfoHandler}>Show More</a>&nbsp;
+                    <Link to='/profile/edit' className="button is-primary is-inverted">Update Profile</Link>
                   </div>
                 </div>
-              </div>           
-            </div>
-        </div>
+              </div>
+            </div>           
+          </div>
+      </div>
       )
     }
   }

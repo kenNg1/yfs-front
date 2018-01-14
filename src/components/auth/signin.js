@@ -17,8 +17,10 @@ const mapStateToProps = state => {
 class Signin extends Component {
 
   submit = (values) => {
+    console.log("show history",this.props)
     this.props.signInUser(values, () => {
-      this.props.history.push('/profile');      
+      // this.props.history.push('/profile');      
+      this.props.history.goBack();      
     })    
   }
 

@@ -63,10 +63,6 @@ class RegisterEventForm extends Component {
           </div>
       </section>
       )
-    } else if(this.props.type === "Day"){
-
-    } else if(this.props.type === "Talk"){
- 
     }
 
       return (

@@ -24,8 +24,17 @@ class EventIndex extends Component {
   }
 
   componentDidMount() {
-    window.scrollTo(0, 0);    
-    this.props.getEvents()
+    window.scrollTo(0, 0);
+
+    this.props.getEvents();
+    const selectedCountry = JSON.parse(localStorage.getItem('selectedCountry'))
+
+    let countryNames = COUNTRIES.map(country=>{
+      country.name
+    })
+    if(selectedCountry && countryNames.indexOf(selectedCountry.name)!==0){
+      this.setState({selectedCountry:selectedCountry})
+    }
   }
   
   renderFull(max,joined){
@@ -68,6 +77,7 @@ class EventIndex extends Component {
     let renderedEvents = null;
     let eventList = this.props.eventIndex;
     let sortByDate = null;
+    console.log("STATE",this.state)
 
     if(this.state.dateOrder === 'ascending'){
 
@@ -119,7 +129,7 @@ class EventIndex extends Component {
                     <p className="title is-5">{event.name}</p>
                     <p>{event.shortInfo}</p>
                 </div>
-                <p className='location' style={{marginTop:'20px'}}><strong>Location:</strong> {event.location}</p>
+                <p className='location' style={{marginTop:'20px'}}><strong>Location:</strong> {event.location}, {event.country.name}</p>
   
                 <div className="column is-4 is-two-thirds-mobile cardRight">
                   <div className="card">

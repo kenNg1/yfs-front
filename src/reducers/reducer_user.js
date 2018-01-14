@@ -1,4 +1,5 @@
 import { AUTH_ERROR } from '../actions'
+import { GET_COUNTRY } from '../actions'
 import { SIGN_IN } from '../actions'
 import { SIGN_UP } from '../actions'
 import { LOG_OUT } from '../actions'

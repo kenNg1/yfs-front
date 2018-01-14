@@ -1,3 +1,5 @@
+export const STANDARD_SELECT = [{value:'',text:''},{value:'true',text:'Yes'},{value:'false',text:'No'}]
+
 export const COUNTRIES = [{name:'China',code:'cn'}, {name:'Hong Kong',code:'hk'}, {name:'Malaysia',code:'my'},{name:'Singapore',code:'sg'}, {name:'Thailand',code:'th'}]
 
 export const CITIES = ['Shenzhen', 'Hong Kong', 'Kuala Lumpar','Singapore', 'Bangkok']
@@ -18,8 +20,34 @@ export const SCHOOLS = [
   'Hong Kong Academy',
 ]
 
+export const INDUSTRIES = [
+'Accountancy, banking and finance',
+'Business, consulting and management',
+'Charity and voluntary work',
+'Creative arts and design',
+'Energy and utilities',
+'Engineering and manufacturing',
+'Environment and agriculture',
+'Healthcare',
+'Hospitality and events management',
+'Information technology',
+'Law',
+'Law enforcement and security',
+'Leisure, sport and tourism',
+'Marketing, advertising and PR',
+'Media and internet',
+'Property and construction',
+'Public services and administration',
+'Recruitment and HR',
+'Retail',
+'Sales',
+'Science and pharmaceuticals',
+'Social care',
+'Teacher training and education',
+'Transport and logistics'
+]
+
 export const ALLCOUNTRIES = [
-  {name:"Please select a country",code:"na",dial_code:"na"},
   {name:"Hong Kong",code:"HK",dial_code:"+852"},
   {name:"China",code:"CN",dial_code:"+86"},
   {name:"Malaysia",code:"MY",dial_code:"+60"},

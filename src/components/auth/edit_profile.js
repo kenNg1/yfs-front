@@ -12,7 +12,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   studentProfile: actions.studentProfile,
   mentorProfile: actions.mentorProfile,
-  editStudentProfile: actions.editStudentProfile
+  editStudentProfile: actions.editStudentProfile,
+  editMentorProfile: actions.editMentorProfile
 }
 
 const countries = ['Bangladesh','Bhutan','Brunei', 'Burma (Myanmar)', 'Cambodia', 'China', 'East Timor', 'Hong Kong', 'India', 'Indonesia', 'Japan', 'Kazakhstan', 'South Korea', 'Laos', 'Malaysia', 'Maldives', 'Mongolia', 'Nepal', 'Philippines', 'Russia', 'Singapore', 'Sri Lanka', 'Taiwan', 'Thailand','Vietnam']
@@ -21,10 +22,16 @@ class EditProfile extends Component {
 
   submit = (values) => {
     // values['countryId'] = countries.indexOf(values['country.name'])
-    values['dob'] = moment(values['dob']).format();      
-    this.props.editStudentProfile(values,this.props.userProfile.userId, () => {
-      this.props.history.push('/profile')
-    })
+    values['dob'] = moment(values['dob']).format();
+    if(localStorage.getItem('tier')==="student"){
+      this.props.editStudentProfile(values,this.props.userProfile.userId, () => {
+        this.props.history.push('/profile')
+      }) 
+    } else {
+      this.props.editMentorProfile(values,this.props.userProfile.userId, () => {
+        this.props.history.push('/profile')
+      })
+    }
   }
   
   componentDidMount() {
@@ -54,14 +61,19 @@ class EditProfile extends Component {
       color: 'black'
     }
     
-    return (
-      <div className='container-fluid' style={landingBackground}>
-        <div style={centerText}>
-          {/* <EditStudentProfileForm userProfile={this.props.userProfile} countries={countries} onSubmit={this.submit}/> */}
-          <SignupForm edit={true} userProfile={this.props.userProfile} formType={"student"} countries={countries} onSubmit={this.submit}/>
+    if(localStorage.getItem('tier')){
+      return (
+        <div className='container-fluid' style={landingBackground}>
+          <div style={centerText}>
+            {/* <EditStudentProfileForm userProfile={this.props.userProfile} countries={countries} onSubmit={this.submit}/> */}
+            <SignupForm edit={true} userProfile={this.props.userProfile} formType={localStorage.getItem('tier')} countries={countries} onSubmit={this.submit}/>
+          </div>
         </div>
-      </div>
-    )
+      )
+    } else {
+      return <div>Loading...</div>
+    }
+    
   }
 }
 
