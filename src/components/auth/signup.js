@@ -36,6 +36,7 @@ class Signup extends Component {
     }
 
     this.props.signUpUser(values, () => {
+      console.log(this.props)
       this.props.history.push('/profile')
     })
   }

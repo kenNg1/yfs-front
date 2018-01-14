@@ -22,6 +22,10 @@
     margin-left:20%;  
 }
 
+#landing p.subtitle.is-6.first {
+    font-weight:bold;
+}
+
 @media (min-width:1000px){
     #landing .legend p {
         font-size:4.5rem;
@@ -49,8 +53,10 @@
     padding:4% 0;
   }
 
-#landing .secondBackground .column {
-    margin:3% 0;
+#landing .secondBackground .column, #landing .thirdBackground .column {
+    margin:2% 0;
+    padding-left:10%;
+    padding-right:10%;
 }
 
 #landing .secondBackground h4 {

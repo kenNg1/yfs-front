@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import * as actions from "../actions";
 import './landing.css'
+import OnVisible, { setDefaultProps } from 'react-on-visible';
 
 // import hero from './hero2.png';
 // below is example only
@@ -14,6 +15,12 @@ import mentorImg from './images/mentorship.png'
 import mapImg from './images/map.png'
 import gallery1 from './images/gallery1.jpg'
 const Fragment = React.Fragment;
+
+setDefaultProps({
+  // bounce: true,
+  // visibleClassName: 'appear',
+  // percent: 10
+});
 
 const mapStateToProps = state => {
   return {
@@ -93,11 +100,13 @@ class Landing extends Component {
           <div className='container has-text-centered'>
             <p className="title is-3">YFS BOOTCAMP BY THE NUMBERS</p>
             <div className="columns is-desktop is-vcentered">
+              <OnVisible>
                 <div className="column has-text-centered">
                     <p className="title is-1">36</p>
                     <p className="subtitle is-6 first">Hours</p>
                     <p className="subtitle is-6">fully devoted learning experience</p>
                 </div>
+              </OnVisible>
                 <div className="column has-text-centered">
                     <p className="title is-2">2</p>
                     <p className="subtitle is-6 first">Days</p>
@@ -111,7 +120,7 @@ class Landing extends Component {
                 <div className="column has-text-centered">
                     <p className="title is-2">1</p>
                     <p className="subtitle is-6 first">Mentor</p>
-                    <p className="subtitle is-6">working closely with your team throughout the program</p>
+                    <p className="subtitle is-6">to work closely with your team throughout the program</p>
                 </div>
             </div>
           </div>

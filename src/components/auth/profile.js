@@ -33,6 +33,10 @@ class Profile extends Component {
   componentDidMount(){
     this.tier = localStorage.getItem('tier');   
     this.id = localStorage.getItem('id')*1;
+
+    // console.log(this.tier)
+    // console.log(this.id)
+
     if(this.tier === 'student'){
       this.props.studentProfile(this.id)
       // this.props.getStudentEvents(this.id)
@@ -56,6 +60,11 @@ class Profile extends Component {
   
   render(){
     
+    // console.log("I'm here")
+
+    // console.log("state",this.state)
+    // console.log("props",this.props)
+
     const landingBackground = {
       width: "100vw",
      }
