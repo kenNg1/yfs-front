@@ -62,11 +62,10 @@ class AdminMain extends Component {
             )}
           </p>
         </nav>
-
-        <AdminStudent />
-        <AdminEvent />
-        <AdminMentor />
-        <AdminApplication />
+        {this.state.activeTab === "event" && <AdminEvent />}
+        {this.state.activeTab === "student" && <AdminStudent />}
+        {this.state.activeTab === "mentor" && <AdminMentor />}
+        {this.state.activeTab === "application" && <AdminApplication />}
       </div>
     );
   }
