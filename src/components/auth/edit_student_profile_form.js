@@ -32,7 +32,6 @@ class EditStudentProfileForm extends Component {
         <div>loading...</div>
       )
     } else {
-      console.log(this.props)
       return (
         <div className="container"> 
         <form onSubmit={handleSubmit} >

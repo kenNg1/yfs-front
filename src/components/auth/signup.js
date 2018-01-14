@@ -16,8 +16,7 @@ class Signup extends Component {
   }
 
   submit = (values,error) => {
-    console.log(error)
-    
+   
     values.tier = this.state.formType;
 
     if(values.country){
@@ -35,8 +34,6 @@ class Signup extends Component {
     if(dialCode){
       values.mobileNumber = `${dialCode}-${values.mobileNumber}`
     }
-
-    console.log(values);
 
     this.props.signUpUser(values, () => {
       this.props.history.push('/profile')

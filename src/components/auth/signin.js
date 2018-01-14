@@ -17,7 +17,6 @@ const mapStateToProps = state => {
 class Signin extends Component {
 
   submit = (values) => {
-    console.log("show history",this.props)
     this.props.signInUser(values, () => {
       // this.props.history.push('/profile');      
       this.props.history.goBack();      
@@ -35,8 +34,6 @@ class Signin extends Component {
   }
 
   render(){
-    console.log(this.props);
-    console.log("hello");
         
     const landingBackground = {
       width: "100vw",

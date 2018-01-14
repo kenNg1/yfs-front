@@ -77,7 +77,6 @@ class EventIndex extends Component {
     let renderedEvents = null;
     let eventList = this.props.eventIndex;
     let sortByDate = null;
-    console.log("STATE",this.state)
 
     if(this.state.dateOrder === 'ascending'){
 
@@ -158,8 +157,6 @@ class EventIndex extends Component {
     }
     
     if (this.props.eventIndex.length > 0) {
-      console.log(this.props.eventIndex)
-      console.log(this.state)
       return (
         <div id="eventsIndex" className='container-fluid'>
           <br />

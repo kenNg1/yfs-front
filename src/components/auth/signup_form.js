@@ -3,6 +3,8 @@ import { Field, reduxForm } from 'redux-form'
 import { STANDARD_SELECT, ALLCOUNTRIES, INDUSTRIES, CITIES, FAMILIARITY } from '../UI/formOptions'
 import '../../styles/animations.css'
 import { connect } from 'react-redux'
+import FlagIcon from '../UI/FlagIcon.js'
+
 
 const Fragment = React.Fragment;
 
@@ -21,19 +23,15 @@ class SignupForm extends Component{
         ...user,
         email
       }; 
-      console.log(initData)
       this.props.initialize(initData);
     }
   }
 
-  componentDidMount(){
-    if(this.props.edit){
-    console.log("happenin")
-    const user = this.props.userProfile;
-
-    console.log(this.handleInitialize(user));
-    }
-  }
+  // componentDidMount(){
+  //   if(this.props.edit){
+  //   const user = this.props.userProfile;
+  //   }
+  // }
 
   renderField = ({ input, className, disabled, placeholder, type, meta: { touched, error, warning } }) => {
 
@@ -70,7 +68,6 @@ class SignupForm extends Component{
   }
   
   renderSelectField = ({ input, className, style, label, type, meta: { touched, error }, children }) => {
-    console.log("input select",input)
     if(input.value===""){
       style = {color:'#dbdbdb'}
     }
@@ -209,11 +206,7 @@ class SignupForm extends Component{
 
   render(){
 
-    console.log("look for formtype",this.props)
-
     const { handleSubmit, pristine, reset, submitting } = this.props
-
-    console.log("handleSubmit",this.props.handleSubmit)
 
     const radioButtonMargins = {
       marginRight: '10px',

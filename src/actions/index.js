@@ -109,7 +109,6 @@ export const studentProfile = (id, callback) => {
     axios.get(`${ROOT_URL}/api/students/${id}`)
     .then(response => {
     response.data.dob = moment(response.data.dob).format('YYYY-MM-DD');
-    console.log('user',response.data)
       dispatch({type: STUDENT_PROFILE, payload: response.data})
     })
     .catch(error => {})    

@@ -38,7 +38,6 @@ class EditProfile extends Component {
     const id = localStorage.getItem('id')*1
     tier === 'student' ? this.props.studentProfile(id) : this.props.mentorProfile(id);
     const student = this.props.studentProfile(id);
-    console.log("student",student)
   }
   
   render(){

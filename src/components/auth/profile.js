@@ -44,7 +44,6 @@ class Profile extends Component {
 
   goToActionHandler = (eventId) => {
     this.props.history.push(`/events/${eventId}`);
-    console.log("INSTEAD OF CHANGING ROUTES, LETS BRING UP THE REG INFO AS A MODAL")
   }
 
   showInfoHandler = () => {
@@ -57,15 +56,12 @@ class Profile extends Component {
   
   render(){
     
-    console.log("show these props",this.props)
-
     const landingBackground = {
       width: "100vw",
      }
     
     let registeredEvents = null;
     let eventsPageButton = null;
-    let status = null;
 
     if( !this.props.userProfile){
       return (
@@ -79,15 +75,6 @@ class Profile extends Component {
       registeredEvents =  this.props.userProfile.events.map(event => {
         
         const date = moment(event.date).format("DD-MM-YYYY")
-
-        if(event.event_student.status === "Pending"){
-          status = <button className="button is-danger is-outlined">Registration Pending</button>
-        } else if(event.event_student.status === "Accepted") {
-          status = <button className="button is-link is-inverted">Accepted</button>
-        } else if(event.event_student.status === "Cancelled"){
-          status = <button className="button">Application cancelled</button>         
-        }
-
         
         if( !this.props.userProfile.events){
           return (

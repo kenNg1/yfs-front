@@ -45,10 +45,7 @@ class EventShow extends Component {
     if(userProfile){
       const ids = userProfile.events.map(event=>event.id)
       const eventId = parseInt(this.props.match.params.id,10)
-      // console.log("evs",userProfile.events)
-      // console.log("current status",userProfile.events[ids.indexOf(eventId)].event_student.status)
       if(!this.state.registered && ids.indexOf(eventId)!== -1){
-        console.log("disable the button!")
         this.setState({registered:true})
         this.setState({registrationStatus:userProfile.events[ids.indexOf(eventId)].event_student.status})
       }
@@ -111,7 +108,6 @@ class EventShow extends Component {
       })
     } else {
       this.props.registerEvent(values, (data) => {
-        console.log(data)
         this.setState({registered:true})
         this.setState({registrationStatus:data.status})
       });
@@ -151,7 +147,6 @@ class EventShow extends Component {
   }
 
   render(){
-    console.log("event-show-props",this.props)
 
     let modal = null;
     let modalForm = null;
@@ -186,8 +181,6 @@ class EventShow extends Component {
           </div>
         )
       } else {
-        console.log(this.props.selectedEvent)
-        // const previousApplication = 
 
         const studentIds = this.props.selectedEvent.students.map(student => student.id)
         const eventId = parseInt(this.props.userProfile.id,10)
@@ -197,14 +190,6 @@ class EventShow extends Component {
         if(this.props.selectedEvent&&this.props.selectedEvent.students[studentIds.indexOf(eventId)]){
           previousApplication = this.props.selectedEvent.students[studentIds.indexOf(eventId)].event_student
   
-          console.log(previousApplication)
-          //   console.log("evs",userProfile.events)
-          //   const previousApplication = userProfile.events[ids.indexOf(eventId)].event_student.status
-          //   if(!this.state.registered && ids.indexOf(eventId)!== -1){
-          //     this.setState({registered:true})
-          //     this.setState({registrationStatus:userProfile.events[ids.indexOf(eventId)].event_student.status})
-          //   }
-          // }
         }
 
         if(localStorage.getItem('tier')==="mentor"){
@@ -259,7 +244,6 @@ class EventShow extends Component {
     } else {
       
       const selectedEvent = this.props.selectedEvent
-      console.log(selectedEvent)
       return (
         <div className='container-fluid' >
           <br></br>
@@ -348,7 +332,6 @@ class RegistrationInfo extends Component {
   }
 
   render(){
-    console.log(this.props)
 
     const {event} = this.props
     const date = moment(event.date).format("DD-MM-YYYY")

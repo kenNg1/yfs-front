@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { Field, reduxForm } from 'redux-form'
 
 let SigninForm = props => {
-  console.log(props);
   const { handleSubmit } = props
   return (
     <div>

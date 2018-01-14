@@ -3,7 +3,6 @@ import { Field, reduxForm } from 'redux-form'
 
 
 let ForgotPass = props => {
-  console.log(props);
   const { handleSubmit } = props
   return (
     <div>

@@ -14,7 +14,6 @@ class Mentor extends Component {
 
   submit = values => {
     values.tier = this.state.formType;
-    console.log(values);
     this.props.signUpUser(values, () => {
       this.props.history.push("/");
     });
