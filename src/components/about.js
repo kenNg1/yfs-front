@@ -46,7 +46,7 @@ class Mentor extends Component {
                           className="image is-128x128"
                           style={{ margin: "0 auto", marginBottom: "5px" }}
                         >
-                          <img src="https://bulma.io/images/placeholders/128x128.png" />
+                          <img src="https://bulma.io/images/placeholders/128x128.png" alt="" />
                         </figure>
                         <p className="title is-4">John Smith</p>
                         <p className="subtitle is-6">CEO</p>
@@ -56,7 +56,7 @@ class Mentor extends Component {
                           className="image is-128x128"
                           style={{ margin: "0 auto", marginBottom: "5px" }}
                         >
-                          <img src="https://bulma.io/images/placeholders/128x128.png" />
+                          <img src="https://bulma.io/images/placeholders/128x128.png" alt=""/>
                         </figure>
                         <p className="title is-4">John Smith</p>
                         <p className="subtitle is-6">CEO</p>
@@ -66,7 +66,7 @@ class Mentor extends Component {
                           className="image is-128x128"
                           style={{ margin: "0 auto", marginBottom: "5px" }}
                         >
-                          <img src="https://bulma.io/images/placeholders/128x128.png" />
+                          <img src="https://bulma.io/images/placeholders/128x128.png" alt=""/>
                         </figure>
                         <p className="title is-4">John Smith</p>
                         <p className="subtitle is-6">CEO</p>

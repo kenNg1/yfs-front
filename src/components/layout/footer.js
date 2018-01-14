@@ -25,9 +25,9 @@ class Footer extends Component {
                 </div>
                 <div className="column">
                     <div className="social-networks">
-                        <a href="https://www.facebook.com/YoungFoundersSchool/" target="_blank" className="facebook"><i className="fab fa-facebook"></i></a>
-                        <a href="https://www.instagram.com/youngfoundersschool/" target="_blank" className="instagram"><i className="fab fa-instagram"></i></a>
-                        <a href="https://twitter.com/hashtag/YoungFoundersSchool?src=hash&lang=en" target="_blank" className="twitter"><i className="fab fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/YoungFoundersSchool/" target="_blank" rel="noopener noreferrer" className="facebook"><i className="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/youngfoundersschool/" target="_blank" rel="noopener noreferrer" className="instagram"><i className="fab fa-instagram"></i></a>
+                        <a href="https://twitter.com/hashtag/YoungFoundersSchool?src=hash&lang=en" target="_blank" rel="noopener noreferrer" className="twitter"><i className="fab fa-twitter"></i></a>
                     </div>
                     <button type="button" className="btn btn-default">Contact us</button>
                 </div>

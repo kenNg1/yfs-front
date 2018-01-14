@@ -30,7 +30,7 @@ class EventIndex extends Component {
     const selectedCountry = JSON.parse(localStorage.getItem('selectedCountry'))
 
     let countryNames = COUNTRIES.map(country=>{
-      country.name
+      return country.name
     })
     if(selectedCountry && countryNames.indexOf(selectedCountry.name)!==0){
       this.setState({selectedCountry:selectedCountry})

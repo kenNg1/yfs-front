@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
 import { Field, reduxForm } from 'redux-form'
-import { STANDARD_SELECT, ALLCOUNTRIES, INDUSTRIES, CITIES, SCHOOLS, FAMILIARITY } from '../UI/formOptions'
+import { STANDARD_SELECT, ALLCOUNTRIES, INDUSTRIES, CITIES, FAMILIARITY } from '../UI/formOptions'
 import '../../styles/animations.css'
 import { connect } from 'react-redux'
-import FlagIcon from '../UI/FlagIcon.js'
-import Radio from '../UI/radiobutton'
 
 const Fragment = React.Fragment;
 
@@ -115,7 +113,6 @@ class SignupForm extends Component{
             {touched && error && <Fragment><span className="help is-danger">{error}</span></Fragment>}
           </div>
         );
-      return <div></div>
     }
 
     renderCheckBoxesField = ({label, options, input, meta: { touched, error }}) => {  
@@ -195,7 +192,7 @@ class SignupForm extends Component{
       const start = errors.splice(0,errors.length-1) ;
       const end = errors[errors.length-1] ;
       return `Your password must ${start.join(", ")} and ${end}`;
-    } else if(errors.length==1){
+    } else if(errors.length===1){
       return `Your password must ${errors.join("")}`;
     }
     return undefined
@@ -244,7 +241,7 @@ class SignupForm extends Component{
       const code = this.props.formState.values.code.toLowerCase()
       dialCodeClass=  ["form-control","flag-icon-select",`flag-icon-${code}`].join(" ")
       let dc = DIAL_CODES.filter((country)=>{
-        return country.code==this.props.formState.values.code
+        return country.code===this.props.formState.values.code
       }).map((country)=>{return country.dial_code})[0]
       dialCode = <span className="input">{dc}</span>
       phonePlaceholder = "Enter phone no";
@@ -636,7 +633,7 @@ class SignupForm extends Component{
                 <div className="field-body">
                   <div className="field">
                     <div className="control">
-                      <p style={{paddingLeft:'0.25rem'}} className="help" style={{fontSize:'15px'}}>Tick one or more:</p>
+                      <p className="help" style={{paddingLeft:'0.25rem',fontSize:'15px'}}>Tick one or more:</p>
 
                         <Field name="participation" component={this.renderCheckBoxesField} validate={[this.required]} className="form-control" options={[
                           {id:"speaker",name:"Speaker"},

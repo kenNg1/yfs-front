@@ -48,7 +48,7 @@ class Profile extends Component {
   }
 
   showInfoHandler = () => {
-    if(this.state.hiddenInfo==true){
+    if(this.state.hiddenInfo===true){
       this.setState({hiddenInfo:false})
     } else {
       this.setState({hiddenInfo:true})
@@ -65,6 +65,7 @@ class Profile extends Component {
     
     let registeredEvents = null;
     let eventsPageButton = null;
+    let status = null;
 
     if( !this.props.userProfile){
       return (
@@ -77,7 +78,6 @@ class Profile extends Component {
       
       registeredEvents =  this.props.userProfile.events.map(event => {
         
-        let status = null;
         const date = moment(event.date).format("DD-MM-YYYY")
 
         if(event.event_student.status === "Pending"){

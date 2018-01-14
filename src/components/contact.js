@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
 import MapWithAMarker from "./contact-maps";
 
 class Contact extends Component {

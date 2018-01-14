@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import './event_show.css'
@@ -28,8 +27,6 @@ const mapDispatchToProps = dispatch => {
   }
 };
 
-let modalForm = null;
-
 class EventShow extends Component {
   
   state = {
@@ -47,7 +44,7 @@ class EventShow extends Component {
 
     if(userProfile){
       const ids = userProfile.events.map(event=>event.id)
-      const eventId = parseInt(this.props.match.params.id)
+      const eventId = parseInt(this.props.match.params.id,10)
       // console.log("evs",userProfile.events)
       // console.log("current status",userProfile.events[ids.indexOf(eventId)].event_student.status)
       if(!this.state.registered && ids.indexOf(eventId)!== -1){
@@ -157,9 +154,11 @@ class EventShow extends Component {
     console.log("event-show-props",this.props)
 
     let modal = null;
+    let modalForm = null;
+
     if(this.state.registerModal===true) {
       if(!localStorage.getItem('tier')){
-        this.modalForm = (
+        modalForm = (
           <div>
             <section className="modal-card-body">
               <p className="title is-5">Please login or sign up first!</p>
@@ -171,7 +170,7 @@ class EventShow extends Component {
           </div>
         )
       } else if(this.state.modalTitle==="Unable to make it?"){
-        this.modalForm = (
+        modalForm = (
           <div>
             <section className="modal-card-body">
               <p className="title is-5">Please let us know why you can't make it below...</p>
@@ -191,7 +190,7 @@ class EventShow extends Component {
         // const previousApplication = 
 
         const studentIds = this.props.selectedEvent.students.map(student => student.id)
-        const eventId = parseInt(this.props.userProfile.id)
+        const eventId = parseInt(this.props.userProfile.id,10)
 
         let previousApplication = null;
 
@@ -220,15 +219,15 @@ class EventShow extends Component {
           )
         } else {
           if(this.props.selectedEvent.type === "Bootcamp"){
-            this.modalForm = (
+            modalForm = (
               <RegisterEventForm eventId={this.props.selectedEvent.id} previousApplication={previousApplication} type="Bootcamp" onSubmit={(values)=>this.submit(values)}/>
             )
           } else if(this.props.selectedEvent.type === "Day"){
-            this.modalForm = (
+            modalForm = (
               <RegisterEventForm eventId={this.props.selectedEvent.id} type="Day" onSubmit={(values)=>this.submit(values)}/>
             )
           } else if(this.props.selectedEvent.type === "Talk"){
-            this.modalForm = (
+            modalForm = (
               <RegisterEventForm eventId={this.props.selectedEvent.id} type="Talk" onSubmit={(values)=>this.submit(values)}/>
             )   
           }
@@ -245,7 +244,7 @@ class EventShow extends Component {
                 <p className="modal-card-title">{this.state.modalTitle}</p>
                 <button className="delete" aria-label="close" onClick={this.closeModal}></button>
               </header>
-                {this.modalForm}
+                {modalForm}
             </div>
           </div>
       )

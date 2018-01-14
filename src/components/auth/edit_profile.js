@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import EditStudentProfileForm from './edit_student_profile_form';
 import * as actions from '../../actions';
 import moment from 'moment'
 import SignupForm from './signup_form'
