@@ -35,26 +35,26 @@ class AdminMain extends Component {
   render() {
     return (
       <div className="container-fluid">
-        <nav class="panel">
-          <p class="panel-heading has-text-centered">Admin</p>
-          <p class="panel-tabs">
+        <nav className="panel">
+          <p className="panel-heading has-text-centered">Admin</p>
+          <p className="panel-tabs">
             {this.state.activeTab === "event" ? (
-              <a class="is-active">Event List</a>
+              <a className="is-active">Event List</a>
             ) : (
               <a onClick={() => this.changeTab("event")}>Event List</a>
             )}
             {this.state.activeTab === "mentor" ? (
-              <a class="is-active">Mentor List</a>
+              <a className="is-active">Mentor List</a>
             ) : (
               <a onClick={() => this.changeTab("mentor")}>Mentor List</a>
             )}
             {this.state.activeTab === "student" ? (
-              <a class="is-active">Student List</a>
+              <a className="is-active">Student List</a>
             ) : (
               <a onClick={() => this.changeTab("student")}>Student List</a>
             )}
             {this.state.activeTab === "application" ? (
-              <a class="is-active">Application List</a>
+              <a className="is-active">Application List</a>
             ) : (
               <a onClick={() => this.changeTab("application")}>
                 Application List

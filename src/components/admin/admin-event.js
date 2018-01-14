@@ -18,7 +18,8 @@ class AdminEvent extends Component {
   state = {
     selectedCountry: null,
     dateOrder: "ascending",
-    ddClasses: ["dropdown"]
+    ddClasses: ["dropdown"],
+    modal: false
   };
 
   componentDidMount() {
@@ -70,6 +71,13 @@ class AdminEvent extends Component {
     }
   };
 
+  openModal = event => {
+    this.setState({ modal: event });
+  };
+  closeModal = () => {
+    this.setState({ modal: false });
+  };
+
   render() {
     let renderedEvents = null;
     let eventList = this.props.eventIndex;
@@ -108,22 +116,12 @@ class AdminEvent extends Component {
     }
 
     if (eventList.length === 0) {
-      renderedEvents = (
-        <tr>
-          <td>asd</td>
-          <td>asd</td>
-          <td>asd</td>
-          <td>asd</td>
-          <td>asd</td>
-          <td>asd</td>
-        </tr>
-      );
+      renderedEvents = <tr />;
     } else if (eventList.length > 0) {
       renderedEvents = eventList.map(event => {
         const date = moment(event.date).format("DD-MM-YYYY");
-
         return (
-          <tr>
+          <tr key={event.id} onClick={event => this.openModal(event)}>
             <td>{event.name}</td>
             <td>{event.type}</td>
             <td>{event.country.name}</td>
@@ -216,7 +214,7 @@ class AdminEvent extends Component {
                 />
               </div>
             )}
-            <table class="table is-hoverable">
+            <table className="table is-hoverable">
               <thead>
                 <tr>
                   <th>
@@ -245,21 +243,39 @@ class AdminEvent extends Component {
                   </th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>123</td>
-                  <td>38</td>
-                  <td>23</td>
-                  <td>12</td>
-                  <td>3</td>
-                  <td>68</td>
-                  <td>36</td>
-                  <td>+32</td>
-                </tr>
-                {renderedEvents}
-              </tbody>
+              <tbody>{renderedEvents}</tbody>
             </table>
           </div>
+          {this.state.modal && (
+            <div className="modal is-active">
+              <div className="modal-background" />
+              <div className="modal-card">
+                <header className="modal-card-head">
+                  <p className="modal-card-title">Modal title</p>
+                  <button
+                    onClick={() => this.closeModal()}
+                    className="delete"
+                    aria-label="close"
+                  />
+                </header>
+                <section className="modal-card-body">
+                  <h1>ahsdkjalsd</h1>
+                  <h1>{this.state.modal.name}</h1>
+                </section>
+                <footer className="modal-card-foot">
+                  <button
+                    onClick={() => this.closeModal()}
+                    className="button is-success"
+                  >
+                    Save changes
+                  </button>
+                  <button onClick={() => this.closeModal()} className="button">
+                    Cancel
+                  </button>
+                </footer>
+              </div>
+            </div>
+          )}
         </div>
       );
     }
