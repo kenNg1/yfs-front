@@ -14,9 +14,44 @@ export const GET_EVENTS = 'GET_EVENTS'
 export const GET_EVENT = 'GET_EVENT'
 export const REGISTER_EVENT = 'REGISTER_EVENT'
 export const CHANGE_EVENT_STATUS = 'CHANGE_EVENT_STATUS'
+export const CREATE_OVERLAY = 'CREATE_OVERLAY'
+export const REMOVE_OVERLAY = 'REMOVE_OVERLAY'
 
 // const ROOT_URL = 'http://localhost:8000'
 const ROOT_URL = ''
+
+export const createOverlay = (values) => {
+  return dispatch => {
+    let data = {
+      overlay:true,
+      navbarBurgerClasses:["navbar-burger","burger","is-active"],
+      navbarMenuClasses:["navbar-menu","is-active","pulldown-animation"]
+    }
+      dispatch({type: CREATE_OVERLAY, payload: data});
+  }
+}
+
+export const removeOverlay = (values) => {
+  return dispatch => {
+    let data = {
+      overlay:true,
+      navbarBurgerClasses:["navbar-burger","burger","is-active"],
+      navbarMenuClasses:["navbar-menu","is-active","pullup-animation"]
+    }
+      dispatch({type: REMOVE_OVERLAY, payload: data});
+
+    data = {
+        overlay:false,
+        navbarBurgerClasses:["navbar-burger","burger"],
+        navbarMenuClasses:["navbar-menu"]
+      }
+      
+    setTimeout(() => {
+      dispatch({ type:REMOVE_OVERLAY, payload:data })
+    }, 350)
+
+  }
+}
 
 export const registerEvent = (values, callback) => {
   return dispatch => {

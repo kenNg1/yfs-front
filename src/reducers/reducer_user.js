@@ -41,6 +41,7 @@ export default function(state = initialState, action={}){
         localStorage.clear();
         return {
           ...state,
+          message:null,
           loggedIn: false,
           currentUser: {}
         }  

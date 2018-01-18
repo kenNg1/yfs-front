@@ -1,7 +1,54 @@
+.animation-fadein div {
+    opacity: 0;
+    height: 100%;
+    background: inherit;
+    transition: all 550ms ease-in;
+    transform: translate3d(0,50px,0) scale(0.5);
+    position: relative;
+}
+
+.animation-slideLeft div {
+    opacity: 0;
+    -moz-transition: all 500ms linear;
+    -webkit-transition: all 500ms linear;
+    -o-transition: all 500ms linear;
+    transition: all 500ms linear;
+    -moz-transform: translate3d(-100px, 0px, 0px);
+    -webkit-transform: translate3d(-100px, 0px, 0px);
+    -o-transform: translate(-100px, 0px);
+    -ms-transform: translate(-100px, 0px);
+    transform: translate3d(-100px, 0px, 0px);
+}
+
+.animation-slideRight div {
+    opacity: 0;
+    -moz-transition: all 500ms linear;
+    -webkit-transition: all 500ms linear;
+    -o-transition: all 500ms linear;
+    transition: all 500ms linear;
+    -moz-transform: translate3d(100px, 0px, 0px);
+    -webkit-transform: translate3d(100px, 0px, 0px);
+    -o-transform: translate(100px, 0px);
+    -ms-transform: translate(100px, 0px);
+    transform: translate3d(100px, 0px, 0px);
+}
+
+.animation-visible div {
+    opacity: 1;
+    display: block;
+    transform: translate3d(0,0,0);
+  }
+
 #landing .landingBackground {
+    /* prevents jerking */
+    transition: height 1000000s ease;
+    -webkit-transition: height 1000000s ease;
+    -moz-transition: height 1000000s ease;
+    -o-transition: height 1000000s ease;
+    /* end  */
     width: auto;
     padding-top:10px;
-    height: 85vh;
+    height: 80vh;
     background-repeat: no-repeat;
     background-position: center 
   }
@@ -26,6 +73,11 @@
     font-weight:bold;
 }
 
+#landing h4.subtitle.is-5 {
+    font-family: Arimo, sans-serif;
+    font-weight: 400;
+}
+
 @media (min-width:1000px){
     #landing .legend p {
         font-size:4.5rem;
@@ -47,7 +99,7 @@
 
 #landing .secondBackground {
     width:auto;
-    background-color: white;
+    background-color: #f7f7f7;
     display:flex;
     align-items: center;
     padding:4% 0;
@@ -91,7 +143,7 @@
 }
 
 #landing .about1 {
-    height:400px
+    height:200px
 }
 #landing .about2 {
     height:200px

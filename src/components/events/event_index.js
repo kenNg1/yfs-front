@@ -142,6 +142,11 @@ class EventIndex extends Component {
                   </div>
                 </div>
               </div>
+              <div className="columns is-centered" style={{marginTop:'3px',marginBottom:'3px'}}>
+                <button className="is-primary button">
+                  View Event
+                </button>
+              </div>
             </div>
           </Link>
         )

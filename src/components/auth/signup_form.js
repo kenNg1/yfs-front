@@ -702,7 +702,7 @@ class SignupForm extends Component{
             <br/>
               { this.props.formState && this.props.formState.submitFailed && this.props.formState.syncErrors ? 
                 <div className="expandUp notification is-danger">
-                  One or more errors in the form!
+                  Please fill in all the required fields!
                 </div>:
                 null }
             <div className="field is-horizontal">

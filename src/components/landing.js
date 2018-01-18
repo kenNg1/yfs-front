@@ -14,13 +14,14 @@ import podiumImg from './images/podium.png'
 import mentorImg from './images/mentorship.png'
 import mapImg from './images/map.png'
 import gallery1 from './images/gallery1.jpg'
+import animatedStatements from './animated-statements'
+
 const Fragment = React.Fragment;
 
 setDefaultProps({
-  // bounce: true,
-  // visibleClassName: 'appear',
-  // percent: 10
+  visibleClassName: 'hatch',
 });
+
 
 const mapStateToProps = state => {
   return {
@@ -44,7 +45,6 @@ class Landing extends Component {
     if(this.props.message){
       return(
         <Fragment>
-
           <div className="notification is-primary fade-in-animation" style={{position:'absolute',width:"400px",margin:"0 auto",left:0,right:0,textAlign:'center'}}>
             {this.props.message}
             <br/>
@@ -72,7 +72,9 @@ class Landing extends Component {
           <div className='container'>
             <div className="columns is-desktop is-vcentered">
                 <div className="column has-text-centered">
+                  <OnVisible>
                     <img className="logo" src={awardImg} alt=''/>
+                  </OnVisible>
                     <h4 className="subtitle is-5">Real-life experience for your CV</h4>
                 </div>
                 <div className="column has-text-centered">
@@ -80,7 +82,9 @@ class Landing extends Component {
                     <h4 className="subtitle is-5">Pitch to real investors who judge your data</h4>
                 </div>
                 <div className="column has-text-centered">
+                  <OnVisible>
                     <img className="logo" src={mentorImg} alt=''/>
+                  </OnVisible>
                     <h4 className="subtitle is-5">Gain long-term mentorship & intern opportunities</h4>
                 </div>
             </div>
@@ -90,7 +94,9 @@ class Landing extends Component {
                     <h4 className="subtitle is-5">Get international exposure and industry insights</h4>
                 </div>
                 <div className="column has-text-centered">
-                    <i className="logo far fa-smile fa-5x"></i>
+                  <OnVisible>
+                    <i style={{fontSize:"310%",color:"#ffdd57"}} className="logo far fa-smile fa-5x"></i>
+                  </OnVisible>
                     <h4 className="subtitle is-5">Learn in a fun, engaging way</h4>
                 </div>
             </div>
@@ -100,28 +106,7 @@ class Landing extends Component {
           <div className='container has-text-centered'>
             <p className="title is-3">YFS BOOTCAMP BY THE NUMBERS</p>
             <div className="columns is-desktop is-vcentered">
-              <OnVisible>
-                <div className="column has-text-centered">
-                    <p className="title is-1">36</p>
-                    <p className="subtitle is-6 first">Hours</p>
-                    <p className="subtitle is-6">fully devoted learning experience</p>
-                </div>
-              </OnVisible>
-                <div className="column has-text-centered">
-                    <p className="title is-2">2</p>
-                    <p className="subtitle is-6 first">Days</p>
-                    <p className="subtitle is-6">program on the 38th floor in ICC</p>
-                </div>
-                <div className="column has-text-centered">
-                    <p className="title is-2">8</p>
-                    <p className="subtitle is-6 first">Lectures</p>
-                    <p className="subtitle is-6">from entrepreneurs and a lot more!</p>
-                </div>
-                <div className="column has-text-centered">
-                    <p className="title is-2">1</p>
-                    <p className="subtitle is-6 first">Mentor</p>
-                    <p className="subtitle is-6">to work closely with your team throughout the program</p>
-                </div>
+              {animatedStatements}
             </div>
           </div>
         </section>

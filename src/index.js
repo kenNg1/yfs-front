@@ -11,6 +11,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Header from "./components/layout/header";
+import HeaderOverlay from "./components/layout/header-overlay";
 import Footer from "./components/layout/footer";
 import Landing from "./components/landing";
 import About from "./components/about";
@@ -36,11 +37,14 @@ const store = createStore(
 
 persistStore(store);
 
+
+
 const app = (
   <Provider store={store}>
     <BrowserRouter>
       <div>
         <Header />
+        <HeaderOverlay />
         <ScrollToTop>
           <Switch>
             <Route path="/admin" component={AdminMain} />

@@ -188,7 +188,7 @@ class Profile extends Component {
                   <p className="title is-6">Last Name:
                     <span style={{fontWeight:'normal'}}> {userProfile['lastName']}</span></p>
                   <p className="title is-6" style={{display:'inline'}}>Password: &nbsp;</p>
-                  <a className="button is-primary is-small is-inverted"> Update Password</a>
+                  <a className="button is-primary is-small is-inverted" style={{borderRadius:'2px',fontSize:'.75rem'}}> Update Password</a>
                   { this.tier === "student" ?
                   <p className="title is-6" style={{marginTop:'10px'}}>School Name:
                     <span style={{fontWeight:'normal'}}> {userProfile.schoolName}</span></p>
@@ -210,8 +210,8 @@ class Profile extends Component {
                   </Fragment>
                   }
                   <div className="buttons is-centered" style={{marginTop:'10px'}}>
-                    <a className="button is-primary is-inverted" onClick={this.showInfoHandler}>Show More</a>&nbsp;
-                    <Link to='/profile/edit' className="button is-primary is-inverted">Update Profile</Link>
+                    <a className="button is-primary is-inverted" style={{borderRadius:'2px',fontSize:'.75rem'}} onClick={this.showInfoHandler}>Show More</a>&nbsp;
+                    <Link to='/profile/edit' className="button is-primary is-inverted" style={{borderRadius:'2px',fontSize:'.75rem'}}>Update Profile</Link>
                   </div>
                 </div>
               </div>
