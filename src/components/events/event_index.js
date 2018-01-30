@@ -126,9 +126,9 @@ class EventIndex extends Component {
                 <div className="column is-6 cardLeft">
                     <h3 className='date'>{date}</h3>
                     <p className="title is-5">{event.name}</p>
+                    <p className='location'><strong>Location:</strong> {event.location}, {event.country.name}</p>
                     <p>{event.shortInfo}</p>
                 </div>
-                <p className='location' style={{marginTop:'20px'}}><strong>Location:</strong> {event.location}, {event.country.name}</p>
   
                 <div className="column is-4 is-two-thirds-mobile cardRight">
                   <div className="card">
@@ -171,7 +171,7 @@ class EventIndex extends Component {
             <nav className="breadcrumb has-succeeds-separator" aria-label="breadcrumbs">
               <ul>
                 <li><Link to={'/'}>Home</Link></li>             
-                <li><a>Programs</a></li>             
+                <li><b><a>Programs</a></b></li>             
               </ul>
             </nav>
             <div className="dropdown is-hoverable">

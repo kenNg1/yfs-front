@@ -8,6 +8,7 @@ import * as actions from '../../actions'
 import RegisterEventForm from './register_event'
 import moment from 'moment';
 import placeholderImg from '../images/placeholder480x320.png'
+
 // https://gist.githubusercontent.com/Goles/3196253/raw/9ca4e7e62ea5ad935bb3580dc0a07d9df033b451/CountryCodes.json
 
 const mapStateToProps = state => {
@@ -250,25 +251,27 @@ class EventShow extends Component {
           <nav className="breadcrumb has-succeeds-separator" aria-label="breadcrumbs">
             <ul>
               <li><Link to={'/'}>Home</Link></li>             
-              <li><Link to={'/events'}>Programs</Link></li>             
-              <li><a>{selectedEvent.type}</a></li>             
+              <li><Link to={'/events'}>Programs</Link></li>
+              <li><b><a>{selectedEvent.type}</a></b></li>             
             </ul>
           </nav>
-          <div className='container'>
-            {modal}
-            <TopEventInfo event={selectedEvent}/>
-          </div>
-          <br/>
-          <div id="regInfo" className='container'>
-            <RegistrationInfo registered={this.state.registered} registrationStatus={this.state.registrationStatus} changeToConfirmed={this.changeToConfirmedHandler} event={selectedEvent} openModalRegister={this.openModalRegister} openModalCancel={this.openModalCancel}/>
-          </div>
-          <br/>
-          <div className='container'>
-            {selectedEvent.notice===null? null : <Notice event={selectedEvent}/>}
-          </div>
-          <br/>
-          <div className='container'>
-            <EventInfo event={selectedEvent}/>
+          <div className="animate-opacity">
+            <div className='container'>
+              {modal}
+              <TopEventInfo event={selectedEvent}/>
+            </div>
+            <br/>
+            <div id="regInfo" className='container'>
+              <RegistrationInfo registered={this.state.registered} registrationStatus={this.state.registrationStatus} changeToConfirmed={this.changeToConfirmedHandler} event={selectedEvent} openModalRegister={this.openModalRegister} openModalCancel={this.openModalCancel}/>
+            </div>
+            <br/>
+            <div className='container'>
+              {selectedEvent.notice===null? null : <Notice event={selectedEvent}/>}
+            </div>
+            <br/>
+            <div className='container'>
+              <EventInfo event={selectedEvent}/>
+            </div>
           </div>
         </div>
       )
@@ -295,6 +298,7 @@ class TopEventInfo extends Component {
               <div className="column is-6 cardLeft">
                   <h3 className='date'>{date}</h3>
                   <p className="title is-4">{event.name}</p>
+                  <p className="location"><strong>Location:</strong> {event.location}, {event.country.name}</p>
                   <p>{event.shortInfo}</p>
               </div>
             <div className="column is-4 is-two-thirds-mobile cardRight">
@@ -309,8 +313,6 @@ class TopEventInfo extends Component {
               </div>
             </div>
           </div>
-          <p style={{marginTop:'20px'}}><strong>Location:</strong> {event.location}, {event.country.name}</p>
-
         </div>
       )
     } else {
@@ -390,36 +392,62 @@ class RegistrationInfo extends Component {
     } else {
       eventRegisterButton = 
       <div className="buttons is-centered">
-        <button className='button is-link is-medium' onClick={this.props.openModalRegister}>Register</button>
+        <button className='button is-link is-medium' onClick={this.props.openModalRegister}>Register Here !</button>
       </div>
     }
 
     return (
       <div className="box">
-        <span><i className="fa fa-tag" style={{color:"hsl(217, 71%, 53%)"}} aria-hidden="true"></i><p className="title is-5" style={{display:"inline"}}> &nbsp;Registration Info</p></span>
+        <span><i className="fa fa-tag" style={{color:"rgb(32, 156, 238)"}} aria-hidden="true"></i><p className="title is-5" style={{display:"inline"}}> &nbsp;Registration Info</p></span>
         <hr style={{marginTop:'0.5rem'}}/>
-        <div className="columns">  
+        <div className="columns blueboxes-mobile">  
           <div className="columns is-mobile">
-            <div className="column is-half-mobile">
-              <strong>Title</strong>
-              <p>{event.name}</p>
+            <div className="column is-half-mobile darkerBox">
+              <p style={{fontSize:'17.5px',fontWeight:'700',marginTop:'10%'}}>{event.name}</p>
             </div>
-            <div className="column is-half-mobile">
-              <strong>Remaining Spots</strong>
-              <p>{this.renderFull(event.studentsMax, event.studentsIn)}</p>
+            <div className="column is-half-mobile lighterBox">
+              <p style={{fontSize:'40px'}}>{this.renderFull(event.studentsMax, event.studentsIn)}</p>
+              <p style={{color:'#363636',fontWeight:'200'}}>Remaining Spots</p>
             </div>
           </div>
           <div className="columns is-mobile">
-            <div className="column is-half-mobile">
-              <strong>Closes on</strong>
-              <p>{date}</p>
+            <div className="column is-half-mobile lighterBox">
+              <p style={{color:'#363636',fontWeight:'200'}}>Register by</p>
+              <p style={{fontSize:'17.5px',fontWeight:'700'}}>{date}</p>
             </div>
-            <div className="column is-half-mobile">
-            <strong>Price</strong>
-              <p>HK${event.price}</p>
+            <div className="column is-half-mobile darkerBox">
+              <p style={{fontWeight:'200'}}>Event Fee</p>
+              <p style={{fontSize:'17.5px',fontWeight:'700'}}>HK${event.price}</p>
             </div>
           </div>
         </div>
+
+        <div className="blueboxes-desktop">  
+            <div className="darkerBox">
+              <p style={{fontSize:'17.5px',fontWeight:'700',marginTop:'10%'}}>{event.name}</p>
+            </div>
+            <div className="lighterBox">
+              <p style={{fontSize:'40px'}}>{this.renderFull(event.studentsMax, event.studentsIn)}</p>
+              <p style={{color:'#363636',fontWeight:'200'}}>Remaining Spots</p>
+            </div>
+            <div className="lighterBox">
+              <p style={{color:'#363636',fontWeight:'200', marginTop:'6%'}}>Register by</p>
+              <p style={{fontSize:'17.5px',fontWeight:'700'}}>{date}</p>
+            </div>
+            <div className="darkerBox">
+              <p style={{fontWeight:'200', marginTop:'6%'}}>Event Fee</p>
+              <p style={{fontSize:'17.5px',fontWeight:'700'}}>HK${event.price}</p>
+            </div>
+        </div>
+
+          {/* <div style={{paddingLeft:'1rem'}}>  
+              <p><strong>Title</strong>: {event.name}</p>
+              <p><strong>Remaining Spots</strong>: {this.renderFull(event.studentsMax, event.studentsIn)}</p>
+              <p><strong>Closes on</strong>: {date}</p>
+              <p><strong>Price</strong>: HK${event.price}</p>
+        </div>
+        <br/> */}
+
           {eventRegisterButton}
       </div>
     )

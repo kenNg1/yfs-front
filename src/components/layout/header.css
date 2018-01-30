@@ -18,7 +18,7 @@ a.navbar-item {
     display:none;
 }
 
-@media (max-width:820px){
+@media (max-width:500px){
     .pullup-animation {
         opacity: 0;
         -moz-transition: all 300ms ease-in;
@@ -34,16 +34,24 @@ a.navbar-item {
 
     #myHeader i.fas {
         display:initial;
-        color: #209cee;
+        /* color: #209cee; */
+        color: #5c6280;
         position: absolute;
         left: 27%;
-        top: 10%;
+        top: 32%;
     }
 }
 
 #myHeader a.navbar-item, #myHeader div.navbar-item {
     font-weight:500;
-    color: #0b0f1f;
+    color: #01178B;
+}
+
+@media (min-width:1000px){
+    #myHeader a.navbar-item, #myHeader div.navbar-item {
+        font-weight:600;
+
+    }
 }
 
 #myHeader {
@@ -91,14 +99,15 @@ background-image: -o-linear-gradient(left, #0048BA, transparent);
         display:block;
         padding:0;
         border-bottom-width: 0.2px;
-        border-bottom-color: #00000021;
+        border-bottom-color: #00000021 !important;
         border-bottom-style: solid;
-        padding-bottom: 7px;
+        padding-bottom: 10px;
+        padding-top: 10px;
         width:100%;
     }
 
     #myHeader #navMenuColorwhite-example div div {
-        margin-top: 0px;
+        margin-top: -8px;
     }
 
     #myHeader div.navbar-end {
@@ -108,23 +117,22 @@ background-image: -o-linear-gradient(left, #0048BA, transparent);
 }
 
 
-#myHeader .brand .title {
-    font-family: 'Karla', sans-serif;
+#myHeader p.title.is-4 {
+    font-family: 'Open Sans', sans-serif;
+    font-size:19.5px;
+    color:#01178B;
+    position:absolute;
+    left: 85px;
+    top:20px;
 }
 
 #myHeader .logoGlobe {
     margin-left:15px;
-    height: 70px;
+    height: 60px;
 }
 
+/* took out hover to fix iphone double click issue!!*/
 #myHeader .navbar-item {
-    margin-top:15px;
-    display:inline-block;
-    z-index:99;  
-}
-
-#myHeader .navbar-item:hover {
-    margin-top:15px;
     display:inline-block;
     z-index:99;  
 }
@@ -133,6 +141,9 @@ background-image: -o-linear-gradient(left, #0048BA, transparent);
     padding:0;
 }
 
+.navbar-burger:hover {
+    background-color: rgba(248, 248, 248, 0.05);
+}
 
 .navbar-menu .is-active {
     z-index:999;

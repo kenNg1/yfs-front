@@ -3,6 +3,20 @@
   margin-right: 10px;
 } 
 
+
+@media screen and (max-width: 768px) {
+  #eventsIndex .column.is-two-thirds-mobile {
+      -webkit-box-flex: 0;
+      -ms-flex: none;
+      flex: none;
+      width: 100%;
+  }
+}
+
+#eventIndex .column.is-4 {
+  order:-1
+}
+
 /* global styles */
 
 div#eventShow.box {

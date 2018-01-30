@@ -3,8 +3,11 @@ import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 import * as actions from "../../actions";
 import logoGlobe from './logo-globe.png';
+import logoGlobeColor from './logo-globe-color.png';
+import yfsLogo from './yfs-and-logo.png';
 import './header.css';
 import '../../styles/animations.css';
+
 
 const mapStateToProps = state => ({
   loggedIn: state.userInfo.loggedIn,
@@ -27,8 +30,9 @@ class Header extends Component {
     this.toggleBurgerHandler()    
   }
 
-  closeBurgerHandler = () => {
-    this.props.removeOverlay();    
+  closeBurgerHandler = (location,e) => {
+    this.props.removeOverlay();   
+    this.props.history.push(location) 
   }
 
   toggleBurgerHandler = () => {
@@ -76,12 +80,12 @@ class Header extends Component {
 
       <nav id="myHeader" style={{zIndex:'99'}} className="navbar is-white bottom-border-gradient">
       <div className="navbar-brand">
+        {/* <Link to={'/'} style={{zIndex:'999'}}>     
+          <img style={{marginLeft:'15px',marginTop:'15px',width:'300px',zIndex:'999'}} src={yfsLogo} alt="Young Founders School: A Start up Bootcamp for High School Students" />
+        </Link> */}
         <Link to={'/'} style={{zIndex:'999'}}>     
-          <img style={{zIndex:'999'}} src={logoGlobe} alt="Young Founders School: A Start up Bootcamp for High School Students" className="logoGlobe" />
-          <div style={{zIndex:'999'}} className="brand">
-            <p className="title is-4">Young Founders School</p>
-            <p className="subtitle is-5" style={{color:'hsl(217, 63%, 43%)'}}>Sponsored by Credit Suisse</p>
-          </div>
+          <p className="title is-4">Young Founders School</p>
+          <img style={{zIndex:'999'}} src={logoGlobeColor} alt="Young Founders School: A Start up Bootcamp for High School Students" className="logoGlobe" />
         </Link>
 
         {navbarBurger}
@@ -92,9 +96,9 @@ class Header extends Component {
         <div className="navbar-start">
         </div>
         <div className="navbar-end">
-              <Link to={'/'} onClick={this.closeBurgerHandler} className="navbar-item">
+              <a onClick={this.closeBurgerHandler.bind(this,"/")} className="navbar-item">
                 <i className="fas fa-home"></i> Home
-              </Link>
+              </a>
               <Link to={'/about'} onClick={this.closeBurgerHandler} className="navbar-item">
               <i className="fas fa-info" style={{marginLeft:'5px'}}></i> About Us
               </Link>
@@ -107,8 +111,8 @@ class Header extends Component {
               <Link to={'/mentor'} onClick={this.closeBurgerHandler} className="navbar-item">
               <i className="fas fa-compass"></i> Be a Mentor!
               </Link>
-              <Link to={'/contact'} onClick={this.closeBurgerHandler} className="navbar-item">
-              <i className="fas fa-location-arrow"></i> Contact Us
+              <Link to={'/team'} onClick={this.closeBurgerHandler} className="navbar-item">
+              <i className="fas fa-location-arrow"></i> Our Team
               </Link>
               {loginPanel}
         </div>

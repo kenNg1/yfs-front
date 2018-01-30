@@ -131,7 +131,7 @@ class SignupForm extends Component{
                            }
                            return input.onChange(newValue);
                        }}/>
-                {option.name}
+                <b>{option.name}</b>: {option.note}
             </label>
         </div>)
     });
@@ -605,7 +605,7 @@ class SignupForm extends Component{
               <br/>
               <div className="field is-horizontal">
                 <div className="field-label is-normal">
-                  <label className="label subtitle is-4">Tell us more about yourself</label>
+                  <label className="label">Tell us more about yourself</label>
                 </div>
                 <hr/>
                 <div className="field-body">
@@ -617,29 +617,31 @@ class SignupForm extends Component{
                 </div>
               </div>
   
-              <br/>
+              <hr/>
               <div className="field is-horizontal">
                 <div className="field-label is-normal">
-                  <label className="label subtitle is-4">How would you like to be involved with YFS?</label>
+                  <label className="label">How would you like to be involved with YFS?</label>
                 </div>
-                <hr/>
                 <div className="field-body">
                   <div className="field">
                     <div className="control">
-                      <p className="help" style={{paddingLeft:'0.25rem',fontSize:'15px'}}>Tick one or more:</p>
+                      {/* <p className="help" style={{paddingLeft:'0.25rem',fontSize:'15px'}}>Tick one or more:</p> */}
+                      <div className="box" onClick={()=> this.formActiveHandler("mentor")} style={{border:'1px solid hsl(348, 100%, 61%)',padding:'0.75rem'}}>
+                      <span><i className="fa fa-exclamation-circle" style={{color:"hsl(348, 100%, 61%)"}} aria-hidden="true"></i><p className="title is-5" style={{display:"inline"}}> &nbsp;Tick one or more:</p></span>
+                      </div>
 
                         <Field name="participation" component={this.renderCheckBoxesField} validate={[this.required]} className="form-control" options={[
-                          {id:"speaker",name:"Speaker"},
-                          {id:"floatingMentor",name:"Floating Mentor"},
-                          {id:"fixedMentor",name:"Fixed Mentor"},
-                          {id:"vcPanelist",name:"VC Panelist"}
+                          {id:"speaker",name:"Speaker",note:"Required on either Sat or Sun morning"},
+                          {id:"floatingMentor",name:"Floating Mentor",note:"Required for the duration of the bootcamp"},
+                          {id:"fixedMentor",name:"Fixed Mentor",note:"Required at the bootcamp for at least half a day on either Sat or Sun"},
+                          {id:"vcPanelist",name:"VC Panelist",note:"Required at 4:30pm on Sun"}
                         ]} />
                     </div>
                   </div>
                 </div>
               </div>
   
-              <div className="box" onClick={()=> this.formActiveHandler("mentor")} style={{border:'1px solid hsl(348, 100%, 61%)',padding:'0.75rem'}}>
+              {/* <div className="box" onClick={()=> this.formActiveHandler("mentor")} style={{border:'1px solid hsl(348, 100%, 61%)',padding:'0.75rem'}}>
                   <span><i className="fa fa-exclamation-circle" style={{color:"hsl(348, 100%, 61%)"}} aria-hidden="true"></i><p className="title is-5" style={{display:"inline"}}> &nbsp;Helpful Notes:</p></span>
                   <ul>
                     <hr style={{margin:'0.5rem 0'}}/>
@@ -648,7 +650,7 @@ class SignupForm extends Component{
                     <li><b>Floating Mentor:</b> Required at the bootcamp for at least half a day on either Sat or Sun</li>
                     <li><b>VC Panelist:</b> Required at 4:30pm on Sun</li>
                   </ul>
-              </div>
+              </div> */}
   
             </div>
             }

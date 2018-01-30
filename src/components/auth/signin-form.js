@@ -43,7 +43,7 @@ let SigninForm = props => {
         <br/>
         <div style={{marginLeft:'21%'}}>
         <button type="submit" className='button is-primary'>Sign In</button> &nbsp;<Link to='/signup' className='button is-info'>Sign up</Link>
-        <Link to='/forgotpassword' className='button is-danger is-inverted'>Forgotten password?</Link>
+        <Link to='/forgotpassword' className='button is-danger is-inverted forgottenPassButton'>Forgotten password?</Link>
         </div>
       </form>
       

@@ -9,14 +9,79 @@
   color:pink;
 } */
 
+#regInfo .button.is-link {
+  margin-top:10px;
+  background-color: rgb(32, 156, 238);
+}
 
-#eventShow .location {
+
+@media (max-width:768px){
+  .blueboxes-desktop {
+    display:none;
+  }
+}
+
+@media (min-width:768px){
+  .columns.blueboxes-mobile {
+    display:none;
+  }
+
+  .blueboxes-desktop {
+    display:flex;
+    align-content: center;
+  }
+
+  .blueboxes-desktop .darkerBox, .blueboxes-desktop .lighterBox {
+    width:25%;
+    text-align: center;
+    margin:5px 3px;
+  }
+}
+
+.darkerBox {
+  background-color: rgba(50, 115, 220, 0.74);
+  color: white;
+}
+
+.lighterBox {
+  background-color: rgba(32, 156, 238, 0.12);
+  color:black;
+}
+
+
+#regInfo .column.is-half-mobile{
+    width: 45%;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+.animate-opacity{
+  animation:opac 1.2s
+}
+
+@keyframes 
+  opac{from{opacity:0} to{opacity:1}}
+
+
+#eventShow .location, #eventIndex .location {
   align-self: normal;
-  margin-left:15px;
+  margin-bottom: 20px;
+  margin-top:20px;
 }
 
 #eventShow .column.is-4 {
-  order:0
+  order:-1
+}
+
+@media screen and (max-width: 768px) {
+  #eventShow .column.is-two-thirds-mobile {
+      -webkit-box-flex: 0;
+      -ms-flex: none;
+      flex: none;
+      width: 100%;
+  }
 }
 
 /* modal form */

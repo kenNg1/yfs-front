@@ -18,8 +18,7 @@ class Gallery extends Component {
 
     return (
       <div id="profile" className='container-fluid' style={landingBackground} >
-      <div className="container" style={{padding:'10% 0'}}>
-        <br/>
+      <div className="container" style={{padding:'7% 0'}}>
         <div className="tile is-ancestor">
           <div className="tile is-6 is-vertical is-parent">
             <div className="tile is-child box">
@@ -39,17 +38,17 @@ class Gallery extends Component {
             </div>
           </div>
           <div className="tile is-6 is-vertical is-parent">
-            <div className="tile is-child box has-text-centered">
+            <div className="tile is-child box">
               <img src={gallery4} alt=''/>
               <p className="subtitle is-6"><em>James is an awesome instructor, his knowledge in market research really...</em></p>
               <p className="subtitle is-6"><em>17/09/2017</em></p>
             </div>
-            <div className="tile is-child box has-text-centered">
+            <div className="tile is-child box">
               <img src={gallery5} alt=''/>
               <p className="subtitle is-"><em>The final presentation judges came from Fung Capital, Horizon Venture...</em></p>
               <p className="subtitle is-6"><em>17/09/2017</em></p>
             </div>
-            <div className="tile is-child box has-text-centered">
+            <div className="tile is-child box">
               <img src={gallery6} alt=''/>
               <p className="subtitle is-"><em>Lorem ipsum ...</em></p>
               <p className="subtitle is-6"><em>17/09/2017</em></p>

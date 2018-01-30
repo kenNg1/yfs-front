@@ -16,7 +16,8 @@ class Signup extends Component {
   }
 
   submit = (values,error) => {
-   
+    
+    console.log(values)
     values.tier = this.state.formType;
 
     if(values.country){

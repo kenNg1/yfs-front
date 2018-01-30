@@ -2,6 +2,26 @@ body {
   overflow-x: hidden;
 }
 
+.hero.is-info.is-bold {
+  /* background-image: linear-gradient(141deg,#3273dc 0,#209cee 71%,#3287f5 100%); */
+  background-image: linear-gradient(141deg,#01178B 0,#209cee 71%,#3287f5 100%);
+}
+
+@media (max-width:820px){
+  .forgottenPassButton {
+    margin-top:10px
+  }
+}
+
+
+.navbar-menu {
+  padding:0;
+}
+
+div#navMenuColorwhite-example.navbar-menu.is-active.pulldown-animation {
+  z-index:999;
+}
+
 .title-left-favicon {
   display:inline;
   margin-left: 5px;
@@ -69,7 +89,15 @@ div.box ul li {
 } */
   
 .navbar-burger {
-  margin-top: 10px;
+  margin-top: 6px;
+}
+
+@media screen and (min-width: 1024px){
+
+  .navbar-end{
+    margin-top: 10px;
+  }
+    
 }
 
 .columns.is-vcentered {
