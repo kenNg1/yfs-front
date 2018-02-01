@@ -3,6 +3,13 @@
   margin-right: 10px;
 } 
 
+.animate-opacity{
+  animation:opac 1.2s
+}
+
+@keyframes 
+  opac{from{opacity:0} to{opacity:1}}
+
 
 @media screen and (max-width: 768px) {
   #eventsIndex .column.is-two-thirds-mobile {
